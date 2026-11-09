@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Pengelola Resmi &amp; Editor CMS — BARISMA</title>
+
+  <!-- Favicon using official Logo Icon -->
+  <link rel="icon" type="image/png" href="assets/images/logo-icon.png">
+
+  <!-- Google Fonts: Lora & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              green: '#166534',
+              greenDark: '#0C291B',
+              greenLight: '#F0FDF4',
+              amber: '#D97706',
+              amberLight: '#FEF3C7',
+              slate: '#0F172A',
+              muted: '#64748B',
+            }
+          },
+          fontFamily: {
+            sans:  ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            serif: ['Lora', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    #adminAuthOverlay { transition: opacity .25s ease, visibility .25s ease; }
+    #adminAuthOverlay.authenticated { opacity: 0; visibility: hidden; pointer-events: none; }
+  </style>
+</head>
+
+<body class="bg-slate-100/70 text-slate-900 flex h-screen overflow-hidden font-sans">
+
+  <!-- ============================================================
+       GATEKEEPER / KUNCI AKSES KHUSUS PENGELOLA RESMI
+       ============================================================ -->
+  <div id="adminAuthOverlay" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl p-8 sm:p-10 max-w-md w-full shadow-2xl border border-slate-200 text-center space-y-6">
+      
+      <div class="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center mx-auto shadow-sm">
+        <img src="assets/images/logo-icon.png" alt="BARISMA Logo" class="h-10 w-10 object-contain">
+      </div>
+
+      <div class="space-y-1.5">
+        <span class="badge-tag bg-emerald-50 text-emerald-800 text-[11px]">Akses Terbatas Pengelola</span>
+        <h2 class="font-serif text-2xl font-bold text-slate-900">Portal Editorial BARISMA</h2>
+        <p class="text-xs text-slate-500 leading-relaxed">
+          Halaman ini khusus untuk pengelola resmi (<strong class="text-slate-800">badanrisetmaqasidlsq.yk@gmail.com</strong>).
+        </p>
+      </div>
+
+      <form id="adminLoginForm" class="space-y-4 text-left">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Kata Sandi / PIN Pengelola</label>
+          <div class="relative">
+            <input type="password" id="adminPasswordInput" required placeholder="Masukkan kata sandi..." autocomplete="current-password"
+              class="w-full bg-slate-50 border border-slate-300 rounded-xl py-3 px-4 text-sm focus:outline-none focus:border-brand-green focus:bg-white focus:ring-2 focus:ring-brand-green/20 transition">
+          </div>
+          <p id="authErrorMsg" class="text-xs text-red-600 mt-1.5 hidden flex items-center gap-1">
+            <span>⚠️ Kata sandi salah. Silakan coba kembali.</span>
+          </p>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 bg-brand-green hover:bg-emerald-800 text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow transition">
+          Buka Dashboard Pengelola
+        </button>
+      </form>
+
+      <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+        <a href="index.html" class="hover:text-brand-green transition font-medium">← Kembali ke Web Publik</a>
+        <span class="text-[11px] text-slate-400">PIN Default: <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700 font-mono font-bold">barisma2026</code></span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SIDEBAR (Modern Slate-950)
+       ============================================================ -->
+  <aside class="w-64 bg-slate-950 text-white flex flex-col justify-between shrink-0 border-r border-slate-800 hidden md:flex">
+    <div>
+      <!-- Header / Logo -->
+      <div class="h-20 flex items-center gap-3 px-6 border-b border-slate-800 bg-slate-900/60">
+        <img src="assets/images/logo-icon.png" alt="BARISMA Logo" class="h-10 w-10 object-contain">
+        <div>
+          <div class="font-serif font-bold text-base tracking-wider text-white">BARISMA CMS</div>
+          <div class="text-[10px] uppercase tracking-wider text-emerald-400 font-bold">Portal Editorial Lembaga</div>
+        </div>
+      </div>
+
+      <!-- Nav Links -->
+      <div class="p-4 space-y-1 text-sm font-medium">
+        <div class="text-xs uppercase font-bold text-slate-500 px-3 py-2">Menu Utama</div>
+        <a href="#" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-emerald-500/15 text-emerald-400 font-semibold border border-emerald-500/20">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+          Ringkasan Dashboard
+        </a>
+        <a href="publikasi.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-400 hover:bg-slate-900 hover:text-white transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+          Artikel &amp; Opini Populer
+        </a>
+        <a href="tentang.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-400 hover:bg-slate-900 hover:text-white transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Profil Dewan Pakar
+        </a>
+        <a href="program.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-400 hover:bg-slate-900 hover:text-white transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          Klinik &amp; Pelatihan
+        </a>
+        <a href="kemitraan.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-400 hover:bg-slate-900 hover:text-white transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Kemitraan Kampus
+        </a>
+
+        <div class="pt-4 text-xs uppercase font-bold text-slate-500 px-3 py-2">Interaksi &amp; OJS</div>
+        <a href="kontak.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-400 hover:bg-slate-900 hover:text-white transition">
+          <span class="flex items-center gap-3">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            Pesan Masuk
+          </span>
+          <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold">5</span>
+        </a>
+        <a href="publikasi.html#portal-ojs" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-amber-400 hover:bg-slate-900 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          Portal OJS JUSMA ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- User Profile Footer & Logout -->
+    <div class="p-4 border-t border-slate-800 bg-slate-900/40 space-y-3">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-brand-green text-white font-bold flex items-center justify-center text-xs shrink-0">
+          RF
+        </div>
+        <div class="overflow-hidden">
+          <div class="text-xs font-bold text-white truncate">Rifki (Pengelola)</div>
+          <div class="text-[10px] text-slate-400 truncate">badanrisetmaqasidlsq.yk@gmail.com</div>
+        </div>
+      </div>
+      <button id="lockPortalBtn" class="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-slate-800 hover:bg-red-900/40 text-slate-300 hover:text-red-300 text-xs font-bold transition">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        <span>Kunci / Keluar Portal</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       MAIN CONTENT AREA
+       ============================================================ -->
+  <div class="flex-1 flex flex-col overflow-hidden">
+    
+    <!-- Top Header -->
+    <header class="h-20 bg-white border-b border-slate-200/80 px-8 flex items-center justify-between shrink-0 shadow-sm">
+      <div class="flex items-center gap-5">
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm text-brand-green hover:text-emerald-700 font-bold">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          Lihat Website Publik
+        </a>
+        <span class="text-slate-300">|</span>
+        <span class="text-xs text-slate-500">Alur Editorial: <strong>Draft ➔ Review ➔ Approved ➔ Published</strong></span>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/6285702829379" target="_blank" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 text-brand-green border border-emerald-200 rounded-lg text-xs font-bold">
+          <span>WA Rifki: 0857-0282-9379</span>
+        </a>
+        <button id="openNewArticleModal" class="px-4 py-2 bg-brand-green hover:bg-emerald-800 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm transition">
+          <span>+ Tulis Artikel Baru</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Scrollable Body -->
+    <main class="flex-1 overflow-y-auto p-6 sm:p-8 space-y-8">
+      
+      <!-- Welcome & Alert -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
+        <div>
+          <h1 class="text-2xl sm:text-3xl font-bold font-serif text-slate-900">Ringkasan Editorial &amp; Konten</h1>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">Badan Riset Maqāṣid (BARISMA) — PP LSQ Ar-Rohmah Yogyakarta</p>
+        </div>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-brand-green font-semibold">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Akses Pengelola Terverifikasi</span>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm">
+          <div class="text-xs uppercase font-bold tracking-wider text-slate-400">Naskah Draf</div>
+          <div class="font-serif text-4xl font-bold text-slate-900 mt-2" id="statDraftCount">08</div>
+          <div class="text-xs text-slate-500 mt-1">Dalam pengerjaan kontributor</div>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm">
+          <div class="text-xs uppercase font-bold tracking-wider text-amber-600">Antrean Review</div>
+          <div class="font-serif text-4xl font-bold text-amber-600 mt-2" id="statReviewCount">03</div>
+          <div class="text-xs text-slate-500 mt-1">Menunggu persetujuan editor</div>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm">
+          <div class="text-xs uppercase font-bold tracking-wider text-brand-green">Artikel Terbit</div>
+          <div class="font-serif text-4xl font-bold text-brand-green mt-2" id="statPublishedCount">42</div>
+          <div class="text-xs text-slate-500 mt-1">Tersedia di portal publik</div>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm">
+          <div class="text-xs uppercase font-bold tracking-wider text-blue-600">Pesan Kontak Baru</div>
+          <div class="font-serif text-4xl font-bold text-blue-600 mt-2">05</div>
+          <div class="text-xs text-slate-500 mt-1">Perlu tindak lanjut Rifki</div>
+        </div>
+      </div>
+
+      <!-- Table: Artikel & Antrean Editorial -->
+      <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm overflow-hidden">
+        <div class="px-6 py-5 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
+          <div>
+            <h2 class="font-serif text-base font-bold text-slate-900">Antrean Naskah &amp; Artikel Terkini</h2>
+            <span class="text-xs text-slate-500 font-medium">Termasuk kiriman naskah dari formulir web publik</span>
+          </div>
+          <span class="text-xs text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full font-semibold border border-emerald-200" id="queueSummaryBadge">Sinkron dengan Web Publik</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs sm:text-sm">
+            <thead>
+              <tr class="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase tracking-wider text-[11px]">
+                <th class="py-3 px-6">Judul Naskah</th>
+                <th class="py-3 px-6">Penulis / Kontributor</th>
+                <th class="py-3 px-6">Format Tulisan</th>
+                <th class="py-3 px-6">Status Editorial</th>
+                <th class="py-3 px-6">Diperbarui</th>
+                <th class="py-3 px-6 text-right">Aksi Editor</th>
+              </tr>
+            </thead>
+            <tbody id="editorialQueueTbody" class="divide-y divide-slate-100 text-slate-800">
+              <tr class="hover:bg-slate-50/70 transition">
+                <td class="py-4 px-6 font-semibold text-slate-900">
+                  Epistemologi Maqāṣid: Menemukan Kemaslahatan di Tengah Turbulensi Sosial
+                </td>
+                <td class="py-4 px-6 text-slate-600">Prof. Dr. Abdul Mustaqim</td>
+                <td class="py-4 px-6"><span class="badge-tag badge-opini">Opini Populer</span></td>
+                <td class="py-4 px-6"><span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs">Published</span></td>
+                <td class="py-4 px-6 text-slate-500 text-xs">2 Nov 2026</td>
+                <td class="py-4 px-6 text-right space-x-3 text-xs">
+                  <a href="artikel-detail.html" class="text-slate-500 hover:text-slate-900 font-medium">Pratinjau</a>
+                </td>
+              </tr>
+              <tr class="hover:bg-slate-50/70 transition">
+                <td class="py-4 px-6 font-semibold text-slate-900">
+                  Integrasi AI dalam Riset Keislaman: Batas Etik dan Analisis Bibliometrik
+                </td>
+                <td class="py-4 px-6 text-slate-600">Tim Riset BARISMA</td>
+                <td class="py-4 px-6"><span class="badge-tag badge-opini">Opini Populer</span></td>
+                <td class="py-4 px-6"><span class="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 font-bold text-xs">In Review</span></td>
+                <td class="py-4 px-6 text-slate-500 text-xs">28 Okt 2026</td>
+                <td class="py-4 px-6 text-right space-x-3 text-xs">
+                  <a href="artikel-detail.html" class="text-slate-500 hover:text-slate-900 font-medium">Pratinjau</a>
+                </td>
+              </tr>
+              <tr class="hover:bg-slate-50/70 transition">
+                <td class="py-4 px-6 font-semibold text-slate-900">
+                  Living Hadis di Era Komputasi: Transformasi Ritual Pesantren
+                </td>
+                <td class="py-4 px-6 text-slate-600">M. Maulana Rifki</td>
+                <td class="py-4 px-6"><span class="badge-tag badge-opini">Opini Populer</span></td>
+                <td class="py-4 px-6"><span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs">Published</span></td>
+                <td class="py-4 px-6 text-slate-500 text-xs">20 Okt 2026</td>
+                <td class="py-4 px-6 text-right space-x-3 text-xs">
+                  <a href="artikel-detail.html" class="text-slate-500 hover:text-slate-900 font-medium">Pratinjau</a>
+                </td>
+              </tr>
+              <tr class="hover:bg-slate-50/70 transition">
+                <td class="py-4 px-6 font-semibold text-slate-900">
+                  Filologi Naskah Tafsir Nusantara: Melacak Tradisi Keilmuan Abad 19
+                </td>
+                <td class="py-4 px-6 text-slate-600">Dr. Ahmad Rofiq, M.A.</td>
+                <td class="py-4 px-6"><span class="badge-tag badge-kajian">Working Paper</span></td>
+                <td class="py-4 px-6"><span class="px-2.5 py-0.5 rounded-full bg-slate-200 text-slate-700 font-bold text-xs">Draft</span></td>
+                <td class="py-4 px-6 text-slate-500 text-xs">14 Okt 2026</td>
+                <td class="py-4 px-6 text-right space-x-3 text-xs">
+                  <a href="artikel-detail.html" class="text-slate-500 hover:text-slate-900 font-medium">Pratinjau</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Two Column: Pesan Masuk & Log Aktivitas -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- Pesan Masuk Terkini -->
+        <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-6 space-y-4">
+          <div class="flex justify-between items-center">
+            <h3 class="font-serif text-base font-bold text-slate-900">Pesan Masuk &amp; Permohonan Kemitraan</h3>
+            <span class="text-xs text-brand-green font-bold">Lihat Semua Inbox →</span>
+          </div>
+
+          <div class="space-y-3">
+            <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200/70 text-xs">
+              <div class="flex justify-between items-start">
+                <strong class="text-slate-900 text-sm">Fakultas Ushuluddin UIN Antasari</strong>
+                <span class="text-[11px] text-slate-400">1 jam lalu</span>
+              </div>
+              <p class="text-slate-600 mt-1 line-clamp-2">"Permohonan penjajakan MoU KKL Tematik Metodologi Maqasidi untuk 40 mahasiswa angkatan 2023..."</p>
+              <div class="mt-2 flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[11px] font-semibold">Kemitraan KKL</span>
+                <span class="text-[11px] text-emerald-700 font-bold">Status: Baru</span>
+              </div>
+            </div>
+
+            <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200/70 text-xs">
+              <div class="flex justify-between items-start">
+                <strong class="text-slate-900 text-sm">Fikri Nurwahid (Mahasiswa S2)</strong>
+                <span class="text-[11px] text-slate-400">Kemarin</span>
+              </div>
+              <p class="text-slate-600 mt-1 line-clamp-2">"Konsultasi program Inkubasi Pascasarjana (Uzlah Akademik) untuk penulisan tesis Tafsir Nusantara..."</p>
+              <div class="mt-2 flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[11px] font-semibold">Inkubasi Tesis</span>
+                <span class="text-[11px] text-slate-500 font-medium">Status: Diteruskan ke WA Rifki</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Log Aktivitas Editorial -->
+        <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-6 space-y-4">
+          <h3 class="font-serif text-base font-bold text-slate-900">Log Aktivitas Editorial</h3>
+          <ul class="space-y-3 text-xs text-slate-600">
+            <li class="flex items-start gap-3">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 mt-1 shrink-0"></span>
+              <div>
+                <span>Artikel <strong class="text-slate-900">"Epistemologi Maqāṣid..."</strong> oleh Prof. Dr. Abdul Mustaqim disetujui terbit.</span>
+                <div class="text-[11px] text-slate-400 mt-0.5">Hari ini, 10:15 WIB</div>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-1 shrink-0"></span>
+              <div>
+                <span>Penyesuaian gateway OJS JUSMA pada navigasi publikasi.</span>
+                <div class="text-[11px] text-slate-400 mt-0.5">Kemarin, 16:40 WIB</div>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-2 h-2 rounded-full bg-slate-400 mt-1 shrink-0"></span>
+              <div>
+                <span>Pencadangan data artikel dan pesan kontak berkala berhasil.</span>
+                <div class="text-[11px] text-slate-400 mt-0.5">07 Nov 2026, 02:00 WIB</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- ============================================================
+       MODAL: TULIS ARTIKEL BARU / GENERATOR NASKAH
+       ============================================================ -->
+  <div id="newArticleModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-2xl w-full shadow-2xl border border-slate-200 space-y-5 max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+        <h3 class="font-serif text-xl font-bold text-slate-900">Form Pembuatan Naskah Artikel Baru</h3>
+        <button id="closeNewArticleModal" class="p-1 text-slate-400 hover:text-slate-800">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <form id="draftArticleForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Judul Artikel *</label>
+          <input type="text" id="draftTitle" required placeholder="Contoh: Hermeneutika Maqashid dalam Etika Digital"
+            class="w-full bg-slate-50 border border-slate-300 rounded-xl py-2 px-3 text-sm focus:outline-none focus:border-brand-green">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Nama Penulis *</label>
+            <input type="text" id="draftAuthor" required placeholder="Contoh: Prof. Dr. Abdul Mustaqim"
+              class="w-full bg-slate-50 border border-slate-300 rounded-xl py-2 px-3 text-sm focus:outline-none focus:border-brand-green">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Kategori *</label>
+            <select id="draftCategory" class="w-full bg-slate-50 border border-slate-300 rounded-xl py-2 px-3 text-sm focus:outline-none focus:border-brand-green">
+              <option value="Opini Populer">Opini Populer</option>
+              <option value="Esai &amp; Refleksi">Esai &amp; Refleksi</option>
+              <option value="Working Paper">Working Paper</option>
+              <option value="Resensi Buku & Turats">Resensi Buku &amp; Turats</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Isi Artikel / Ringkasan *</label>
+          <textarea id="draftContent" required rows="6" placeholder="Tuliskan naskah lengkap atau draf opini di sini..."
+            class="w-full bg-slate-50 border border-slate-300 rounded-xl py-2 px-3 text-sm focus:outline-none focus:border-brand-green"></textarea>
+        </div>
+
+        <div class="pt-2 flex justify-end gap-3">
+          <button type="button" id="cancelDraftBtn" class="px-4 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-600 hover:bg-slate-100">Batal</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-brand-green hover:bg-emerald-800 text-white text-xs font-bold shadow">Simpan ke Antrean Editorial</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: REVIEW & EDIT NASKAH SUBMISI WEB (EDITOR PORTAL)
+       ============================================================ -->
+  <div id="reviewArticleModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-3xl w-full shadow-2xl border border-slate-200 space-y-5 max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+        <div>
+          <span class="text-[11px] font-bold text-emerald-700 uppercase tracking-wider">Kurasi &amp; Penyuntingan Naskah</span>
+          <h3 class="font-serif text-xl font-bold text-slate-900 mt-1">Review Naskah Artikel Web</h3>
+        </div>
+        <button id="closeReviewModal" class="p-1 text-slate-400 hover:text-slate-800">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-xs space-y-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-600">
+          <div><strong>Penulis:</strong> <span id="revAuthorDisplay">-</span></div>
+          <div><strong>Instansi:</strong> <span id="revInstDisplay">-</span></div>
+          <div><strong>Email:</strong> <span id="revEmailDisplay">-</span></div>
+          <div><strong>WhatsApp:</strong> <span id="revPhoneDisplay">-</span></div>
+          <div class="sm:col-span-2"><strong>Tautan Dokumen:</strong> <a id="revDocLinkDisplay" href="#" target="_blank" class="text-emerald-700 font-bold hover:underline">Tidak ada tautan</a></div>
+        </div>
+      </div>
+
+      <form id="editSubmissionForm" class="space-y-4">
+        <input type="hidden" id="revArticleId">
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Judul Artikel (Dapat Diedit)</label>
+          <input type="text" id="revTitleInput" required class="w-full bg-slate-50 border border-slate-300 rounded-xl py-2 px-3 text-sm focus:outline-none focus:border-brand-green">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Kategori Tulisan</label>
+            <select id="revCategorySelect" class="w-full bg-slate-50 border border-slate-300 rounded-xl py-2 px-3 text-sm focus:outline-none focus:border-brand-green">
+              <option value="Opini Populer">Opini Populer</option>
+              <option value="Esai &amp; Refleksi">Esai &amp; Refleksi</option>
+              <option value="Resensi Buku &amp; Turats">Resensi Buku &amp; Turats</option>
+              <option value="Kajian Maqāṣidi">Kajian Maqāṣidi</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Status Editorial</label>
+            <select id="revStatusSelect" class="w-full bg-slate-50 border border-slate-300 rounded-xl py-2 px-3 text-sm font-bold focus:outline-none focus:border-brand-green">
+              <option value="In Review">In Review (Dalam Telaah)</option>
+              <option value="Published">Published (Disetujui Terbit)</option>
+              <option value="Draft">Draft (Perlu Revisi Penulis)</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Naskah Lengkap / Teks Artikel</label>
+          <textarea id="revContentInput" required rows="9" class="w-full bg-slate-50 border border-slate-300 rounded-xl py-2.5 px-3.5 text-sm focus:outline-none focus:border-brand-green font-sans leading-relaxed"></textarea>
+        </div>
+
+        <div class="pt-3 border-t border-slate-100 flex flex-wrap justify-between items-center gap-3">
+          <button type="button" id="deleteSubmissionBtn" class="px-4 py-2 rounded-xl border border-rose-200 text-rose-700 hover:bg-rose-50 text-xs font-bold">Hapus Naskah</button>
+          <div class="flex gap-2">
+            <button type="button" id="cancelReviewBtn" class="px-4 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-600 hover:bg-slate-100">Batal</button>
+            <button type="submit" class="px-5 py-2 rounded-xl bg-brand-green hover:bg-emerald-800 text-white text-xs font-bold shadow">Simpan Perubahan &amp; Perbarui Status</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript Logika Proteksi & Interaksi Editorial -->
+  <script>
+    // 1. Password Verification (Default: barisma2026)
+    const AUTH_KEY = 'barisma_cms_authenticated';
+    const VALID_PASS = 'barisma2026';
+    const authOverlay = document.getElementById('adminAuthOverlay');
+    const loginForm = document.getElementById('adminLoginForm');
+    const passInput = document.getElementById('adminPasswordInput');
+    const errorMsg = document.getElementById('authErrorMsg');
+    const lockBtn = document.getElementById('lockPortalBtn');
+
+    if (sessionStorage.getItem(AUTH_KEY) === 'true') {
+      authOverlay.classList.add('authenticated');
+    }
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (passInput.value.trim() === VALID_PASS) {
+        sessionStorage.setItem(AUTH_KEY, 'true');
+        authOverlay.classList.add('authenticated');
+        errorMsg.classList.add('hidden');
+        passInput.value = '';
+      } else {
+        errorMsg.classList.remove('hidden');
+        passInput.focus();
+      }
+    });
+
+    if (lockBtn) {
+      lockBtn.addEventListener('click', () => {
+        sessionStorage.removeItem(AUTH_KEY);
+        authOverlay.classList.remove('authenticated');
+      });
+    }
+
+    // 2. Data Management: Naskah Masuk dari Web Publik (localStorage)
+    const STORAGE_KEY = 'barisma_submitted_articles';
+    const queueTbody = document.getElementById('editorialQueueTbody');
+    const statReviewEl = document.getElementById('statReviewCount');
+    const statPublishedEl = document.getElementById('statPublishedCount');
+    const statDraftEl = document.getElementById('statDraftCount');
+
+    // Default Seed Data bila storage masih kosong
+    const defaultArticles = [
+      {
+        id: 'DEF-1',
+        title: 'Epistemologi Maqāṣid: Menemukan Kemaslahatan di Tengah Turbulensi Sosial',
+        author: 'Prof. Dr. Abdul Mustaqim',
+        institution: 'UIN Sunan Kalijaga / PP LSQ Ar-Rohmah',
+        email: 'mustaqim@barisma.or.id',
+        phone: '081234567890',
+        category: 'Opini Populer',
+        status: 'Published',
+        date: '2 Nov 2026',
+        content: 'Bagaimana cara kerja Tafsir Maqāṣidi dalam membedah isu sosial-kontemporer tanpa tercerabut dari teks suci? Ulasan mendalam mengenai prinsip perlindungan kemaslahatan publik dan keadilan substantif.'
+      },
+      {
+        id: 'DEF-2',
+        title: 'Integrasi AI dalam Riset Keislaman: Batas Etik dan Analisis Bibliometrik',
+        author: 'Tim Riset BARISMA',
+        institution: 'Badan Riset Maqāṣid',
+        email: 'badanrisetmaqasidlsq.yk@gmail.com',
+        phone: '085702829379',
+        category: 'Opini Populer',
+        status: 'In Review',
+        date: '28 Okt 2026',
+        content: 'Menguraikan batas-batas integritas ilmiah ketika memanfaatkan kecerdasan buatan dalam sintesis literatur tafsir dan hadis, serta cara menjaga orisinalitas nalar akademik santri.'
+      },
+      {
+        id: 'DEF-3',
+        title: 'Living Hadis di Era Komputasi: Transformasi Ritual Pesantren',
+        author: 'M. Maulana Rifki',
+        institution: 'PP LSQ Ar-Rohmah',
+        email: 'rifki@barisma.or.id',
+        phone: '085702829379',
+        category: 'Opini Populer',
+        status: 'Published',
+        date: '20 Okt 2026',
+        content: 'Sebuah kajian sosiologis mengenai bagaimana nilai-nilai kenabian diartikulasikan kembali oleh generasi santri dalam ekosistem digital dan media sosial kontemporer.'
+      },
+      {
+        id: 'DEF-4',
+        title: 'Filologi Naskah Tafsir Nusantara: Melacak Tradisi Keilmuan Abad 19',
+        author: 'Dr. Ahmad Rofiq, M.A.',
+        institution: 'Dewan Riset BARISMA',
+        email: 'rofiq@barisma.or.id',
+        phone: '081398765432',
+        category: 'Working Paper',
+        status: 'Draft',
+        date: '14 Okt 2026',
+        content: 'Kajian kodikologis dan filologis terhadap manuskrip tafsir pegon Jawa yang memperlihatkan dinamika adaptasi Islam dengan kearifan kebudayaan lokal.'
+      }
+    ];
+
+    const getStoredArticles = () => {
+      try {
+        const data = localStorage.getItem(STORAGE_KEY);
+        if (!data) {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultArticles));
+          return defaultArticles;
+        }
+        return JSON.parse(data);
+      } catch (err) {
+        return defaultArticles;
+      }
+    };
+
+    const saveArticles = (articles) => {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(articles));
+      } catch (err) {
+        console.error('Save error:', err);
+      }
+    };
+
+    const renderTable = () => {
+      const articles = getStoredArticles();
+      if (!queueTbody) return;
+      queueTbody.innerHTML = '';
+
+      let inReviewCount = 0;
+      let publishedCount = 0;
+      let draftCount = 0;
+
+      articles.forEach((art) => {
+        if (art.status === 'In Review') inReviewCount++;
+        else if (art.status === 'Published') publishedCount++;
+        else draftCount++;
+
+        let badgeClass = 'bg-slate-200 text-slate-700';
+        let badgeLabel = 'Draft';
+        if (art.status === 'Published') {
+          badgeClass = 'bg-emerald-100 text-emerald-800';
+          badgeLabel = 'Published';
+        } else if (art.status === 'In Review') {
+          badgeClass = 'bg-amber-100 text-amber-800 animate-pulse';
+          badgeLabel = 'In Review';
+        }
+
+        const isWebSubmission = art.id && art.id.startsWith('SUB-');
+        const subTag = isWebSubmission ? '<span class="ml-1.5 px-1.5 py-0.5 rounded text-[10px] bg-blue-100 text-blue-700 font-bold">Web Kirim</span>' : '';
+
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50/70 transition';
+        tr.innerHTML = `
+          <td class="py-4 px-6 font-semibold text-slate-900">
+            ${art.title} ${subTag}
+          </td>
+          <td class="py-4 px-6 text-slate-600">
+            ${art.author} ${art.institution ? `<span class="block text-[11px] text-slate-400">${art.institution}</span>` : ''}
+          </td>
+          <td class="py-4 px-6">
+            <span class="badge-tag badge-opini">${art.category || 'Opini'}</span>
+          </td>
+          <td class="py-4 px-6">
+            <span class="px-2.5 py-0.5 rounded-full font-bold text-xs ${badgeClass}">${badgeLabel}</span>
+          </td>
+          <td class="py-4 px-6 text-slate-500 text-xs">${art.date || '-'}</td>
+          <td class="py-4 px-6 text-right space-x-2 text-xs">
+            <button class="px-3 py-1 rounded-lg bg-slate-100 hover:bg-brand-green hover:text-white font-bold text-slate-700 transition" onclick="openReview('${art.id}')">
+              Review / Edit
+            </button>
+            ${art.status !== 'Published' ? `
+              <button class="px-3 py-1 rounded-lg bg-emerald-700 hover:bg-emerald-800 font-bold text-white transition" onclick="quickPublish('${art.id}')">
+                Terbitkan
+              </button>
+            ` : ''}
+          </td>
+        `;
+        queueTbody.appendChild(tr);
+      });
+
+      if (statReviewEl) statReviewEl.textContent = String(inReviewCount).padStart(2, '0');
+      if (statPublishedEl) statPublishedEl.textContent = String(publishedCount).padStart(2, '0');
+      if (statDraftEl) statDraftEl.textContent = String(draftCount).padStart(2, '0');
+    };
+
+    // 3. Quick Publish Action
+    window.quickPublish = (id) => {
+      const articles = getStoredArticles();
+      const target = articles.find(a => a.id === id);
+      if (target) {
+        target.status = 'Published';
+        saveArticles(articles);
+        renderTable();
+        alert(`Artikel "${target.title}" telah disetujui dan berstatus PUBLISHED!`);
+      }
+    };
+
+    // 4. Review & Edit Modal
+    const reviewModal = document.getElementById('reviewArticleModal');
+    const closeReviewBtn = document.getElementById('closeReviewModal');
+    const cancelReviewBtn = document.getElementById('cancelReviewBtn');
+    const editSubForm = document.getElementById('editSubmissionForm');
+    const deleteSubBtn = document.getElementById('deleteSubmissionBtn');
+
+    const toggleReviewModal = (show) => {
+      if (!reviewModal) return;
+      reviewModal.classList.toggle('hidden', !show);
+      reviewModal.classList.toggle('flex', show);
+    };
+
+    if (closeReviewBtn) closeReviewBtn.addEventListener('click', () => toggleReviewModal(false));
+    if (cancelReviewBtn) cancelReviewBtn.addEventListener('click', () => toggleReviewModal(false));
+
+    window.openReview = (id) => {
+      const articles = getStoredArticles();
+      const art = articles.find(a => a.id === id);
+      if (!art) return;
+
+      document.getElementById('revArticleId').value = art.id;
+      document.getElementById('revTitleInput').value = art.title || '';
+      document.getElementById('revAuthorDisplay').textContent = art.author || '-';
+      document.getElementById('revInstDisplay').textContent = art.institution || 'Pondok Pesantren / Umum';
+      document.getElementById('revEmailDisplay').textContent = art.email || '-';
+      document.getElementById('revPhoneDisplay').textContent = art.phone || '-';
+      
+      const docLinkEl = document.getElementById('revDocLinkDisplay');
+      if (art.docLink) {
+        docLinkEl.href = art.docLink;
+        docLinkEl.textContent = art.docLink;
+        docLinkEl.classList.remove('hidden');
+      } else {
+        docLinkEl.textContent = 'Tidak dicantumkan (isi naskah langsung di bawah)';
+        docLinkEl.removeAttribute('href');
+      }
+
+      document.getElementById('revCategorySelect').value = art.category || 'Opini Populer';
+      document.getElementById('revStatusSelect').value = art.status || 'In Review';
+      document.getElementById('revContentInput').value = art.content || '';
+
+      toggleReviewModal(true);
+    };
+
+    // Simpan Perubahan Review
+    if (editSubForm) {
+      editSubForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const id = document.getElementById('revArticleId').value;
+        const articles = getStoredArticles();
+        const target = articles.find(a => a.id === id);
+        if (target) {
+          target.title = document.getElementById('revTitleInput').value.trim();
+          target.category = document.getElementById('revCategorySelect').value;
+          target.status = document.getElementById('revStatusSelect').value;
+          target.content = document.getElementById('revContentInput').value.trim();
+          saveArticles(articles);
+          renderTable();
+          alert('Perubahan naskah dan status editorial berhasil disimpan!');
+          toggleReviewModal(false);
+        }
+      });
+    }
+
+    // Hapus Naskah
+    if (deleteSubBtn) {
+      deleteSubBtn.addEventListener('click', () => {
+        const id = document.getElementById('revArticleId').value;
+        if (confirm('Apakah Anda yakin ingin menghapus naskah ini dari antrean editorial?')) {
+          let articles = getStoredArticles();
+          articles = articles.filter(a => a.id !== id);
+          saveArticles(articles);
+          renderTable();
+          toggleReviewModal(false);
+        }
+      });
+    }
+
+    // 5. Modal Tulis Artikel Baru (Admin Local Addition)
+    const newArticleModal = document.getElementById('newArticleModal');
+    const openModalBtn = document.getElementById('openNewArticleModal');
+    const closeModalBtn = document.getElementById('closeNewArticleModal');
+    const cancelDraftBtn = document.getElementById('cancelDraftBtn');
+    const draftForm = document.getElementById('draftArticleForm');
+
+    const toggleNewArticleModal = (show) => {
+      newArticleModal.classList.toggle('hidden', !show);
+      newArticleModal.classList.toggle('flex', show);
+    };
+
+    if (openModalBtn) openModalBtn.addEventListener('click', () => toggleNewArticleModal(true));
+    if (closeModalBtn) closeModalBtn.addEventListener('click', () => toggleNewArticleModal(false));
+    if (cancelDraftBtn) cancelDraftBtn.addEventListener('click', () => toggleNewArticleModal(false));
+
+    if (draftForm) {
+      draftForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const title = document.getElementById('draftTitle').value.trim();
+        const author = document.getElementById('draftAuthor').value.trim();
+        const category = document.getElementById('draftCategory').value;
+        const content = document.getElementById('draftContent').value.trim();
+
+        const newArt = {
+          id: 'ADM-' + Date.now().toString(36).toUpperCase(),
+          title,
+          author,
+          institution: 'BARISMA Internal',
+          email: 'badanrisetmaqasidlsq.yk@gmail.com',
+          phone: '085702829379',
+          category,
+          status: 'Published',
+          date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }),
+          content
+        };
+
+        const articles = getStoredArticles();
+        articles.unshift(newArt);
+        saveArticles(articles);
+        renderTable();
+
+        alert('Artikel baru berhasil ditambahkan dan langsung dipublikasikan di antrean!');
+        draftForm.reset();
+        toggleNewArticleModal(false);
+      });
+    }
+
+    // Render tabel saat pertama kali dibuka
+    renderTable();
+  </script>
+
+</body>
+</html>

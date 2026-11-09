@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontak &amp; Sekretariat — Badan Riset Maqāṣid (BARISMA) | LSQ Ar-Rohmah</title>
+  <meta name="description" content="Kanal komunikasi resmi Badan Riset Maqāṣid (BARISMA) PP LSQ Ar-Rohmah Yogyakarta. Email: badanrisetmaqasidlsq.yk@gmail.com, WA Rifki: 085702829379.">
+
+  <!-- Favicon using official Logo Icon -->
+  <link rel="icon" type="image/png" href="assets/images/logo-icon.png">
+
+  <!-- Google Font: Plus Jakarta Sans (100% Sans-Serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              green: '#166534',
+              greenDark: '#0C291B',
+              greenLight: '#F0FDF4',
+              amber: '#D97706',
+              amberLight: '#FEF3C7',
+              slate: '#0F172A',
+              muted: '#64748B',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            serif: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+
+  <style>
+    #toastNotification { transition: all .3s cubic-bezier(0.16, 1, 0.3, 1); }
+    #toastNotification.show { transform: translateY(0) !important; opacity: 1 !important; }
+  </style>
+</head>
+
+<body class="bg-white text-slate-900 antialiased font-sans">
+
+  <!-- ============================================================
+       TOP UTILITY BAR
+       ============================================================ -->
+  <div class="utility-bar">
+    <div class="container utility-inner">
+      <div class="utility-left">
+        <span class="utility-dot" aria-hidden="true"></span>
+        <span>Pondok Pesantren LSQ Ar-Rohmah · Yogyakarta</span>
+        <span class="utility-separator">|</span>
+        <a href="mailto:badanrisetmaqasidlsq.yk@gmail.com">badanrisetmaqasidlsq.yk@gmail.com</a>
+      </div>
+      <div class="utility-links">
+        <a href="https://wa.me/6285702829379" target="_blank" rel="noopener noreferrer">WA: Rifki (0857-0282-9379)</a>
+        <span class="utility-separator">|</span>
+        <a href="publikasi.html#portal-ojs">Portal OJS JUSMA ↗</a>
+        <span class="utility-separator">|</span>
+        <a href="admin.html">Portal Editor</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MAIN HEADER & DROPDOWN NAVIGATION
+       ============================================================ -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      
+      <!-- Brand Logo -->
+      <a class="brand" href="index.html" aria-label="BARISMA - Beranda">
+        <img src="assets/images/logo-horizontal.png" alt="BARISMA — Badan Riset Maqāṣid">
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-label="Menu Navigasi">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Primary Navigation with Dropdowns -->
+      <nav class="primary-nav" id="primaryNav" aria-label="Navigasi Utama">
+        
+        <!-- Menu 1: Beranda -->
+        <div class="nav-item">
+          <a class="nav-link" href="index.html">Beranda</a>
+        </div>
+
+        <!-- Menu 2: Profil (Dropdown) -->
+        <div class="nav-item has-dropdown">
+          <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
+            <span>Profil</span>
+            <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="tentang.html">
+              <span>Tentang BARISMA</span>
+            </a>
+            <a class="dropdown-item" href="tentang.html#visi-misi">
+              <span>Visi, Misi &amp; Nilai</span>
+            </a>
+            <a class="dropdown-item" href="tentang.html#tim">
+              <span>Dewan Pakar &amp; Peneliti</span>
+            </a>
+            <a class="dropdown-item" href="tentang.html#afiliasi">
+              <span>Afiliasi PP LSQ Ar-Rohmah</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Menu 3: Publikasi (Dropdown) -->
+        <div class="nav-item has-dropdown">
+          <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
+            <span>Publikasi &amp; Opini</span>
+            <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="publikasi.html">
+              <span>Semua Publikasi</span>
+            </a>
+            <a class="dropdown-item" href="publikasi.html">
+              <span>Artikel Opini Populer</span>
+            </a>
+            <a class="dropdown-item" href="publikasi.html">
+              <span>Esai &amp; Refleksi Pemikiran</span>
+            </a>
+            <a class="dropdown-item" href="publikasi.html">
+              <span>Working Paper &amp; Tesis</span>
+            </a>
+            <a class="dropdown-item" href="publikasi.html">
+              <span>Resensi Buku &amp; Turats</span>
+            </a>
+            <a class="dropdown-item" href="index.html#submit-tulisan">
+              <span>Kirim Tulisan / Artikel ✎</span>
+              <span class="dropdown-item-badge">Submit</span>
+            </a>
+            <a class="dropdown-item" href="publikasi.html#portal-ojs">
+              <span>Portal OJS JUSMA ↗</span>
+              <span class="dropdown-item-badge">Jurnal</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Menu 4: Program (Dropdown) -->
+        <div class="nav-item has-dropdown">
+          <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
+            <span>Program</span>
+            <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="program.html">
+              <span>Semua Program</span>
+            </a>
+            <a class="dropdown-item" href="program.html">
+              <span>Klinik Proposal Skripsi &amp; Tesis</span>
+            </a>
+            <a class="dropdown-item" href="program.html">
+              <span>Uzlah Akademik Pascasarjana</span>
+            </a>
+            <a class="dropdown-item" href="program.html">
+              <span>Penerbitan Buku Antologi Ber-ISBN</span>
+            </a>
+            <a class="dropdown-item" href="program.html">
+              <span>Workshop Metodologi Riset</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Menu 5: Kemitraan (Dropdown) -->
+        <div class="nav-item has-dropdown">
+          <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
+            <span>Kemitraan</span>
+            <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="kemitraan.html">
+              <span>Kerjasama Kampus &amp; Fakultas</span>
+            </a>
+            <a class="dropdown-item" href="kemitraan.html">
+              <span>Pesantren &amp; Ma'had Aly</span>
+            </a>
+            <a class="dropdown-item" href="kemitraan.html#form-kemitraan">
+              <span>Ajukan MoU Kerjasama</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Menu 6: Kontak (Active) -->
+        <div class="nav-item">
+          <a class="nav-link active" href="kontak.html">Kontak</a>
+        </div>
+
+      </nav>
+
+    </div>
+  </header>
+
+<!-- ============================================================
+     HERO HEADER
+     ============================================================ -->
+<header class="bg-gradient-to-b from-slate-50 via-white to-white py-14 sm:py-16 border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <span class="section-tag mb-3">LAYANAN INFORMASI &amp; KOORDINASI RESMI</span>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-900 tracking-tight leading-tight mt-2">
+        Kontak &amp; Sekretariat
+      </h1>
+      <p class="text-base sm:text-lg text-slate-600 mt-4 leading-relaxed font-sans">
+        Pintu komunikasi untuk mahasiswa tugas akhir, dewan peneliti, pimpinan fakultas mitra, dan kontributor artikel. Kami menyambut dialektika keilmuan dan kerjasama akademik.
+      </p>
+    </div>
+  </div>
+</header>
+
+<!-- Breadcrumb -->
+<div class="bg-white border-b border-slate-200/80 py-3 text-xs text-slate-500">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+    <a href="index.html" class="hover:text-brand-green font-medium">Beranda</a>
+    <span>/</span>
+    <span class="text-slate-900 font-semibold">Kontak</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     MAIN CONTENT
+     ============================================================ -->
+<main class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+
+    <!-- Kolom Kiri: Detail Kontak Lembaga -->
+    <div class="lg:col-span-5 space-y-6">
+      <div>
+        <span class="section-tag mb-2">SEKRETARIAT RESMI</span>
+        <h2 class="font-serif text-2xl font-bold text-slate-900 mt-2">
+          Pusat Informasi Lembaga
+        </h2>
+        <p class="text-xs text-slate-600 mt-1">Kanal resmi korespondensi kelembagaan, proposal riset, dan konsultasi program.</p>
+      </div>
+
+      <div class="card-thinktank p-7 space-y-5">
+        
+        <!-- Alamat -->
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 text-brand-green flex items-center justify-center shrink-0 border border-emerald-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block">Alamat Sekretariat:</span>
+            <p class="text-xs sm:text-sm text-slate-800 leading-relaxed font-semibold">
+              Kompleks Pondok Pesantren Lingkar Studi Qur'an (LSQ) Ar-Rohmah
+            </p>
+            <span class="text-xs text-slate-500 block">Yogyakarta, Daerah Istimewa Yogyakarta</span>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="flex items-start gap-4 pt-4 border-t border-slate-100">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 border border-amber-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block">Surat Elektronik (Email Pengelola):</span>
+            <a href="mailto:badanrisetmaqasidlsq.yk@gmail.com" class="text-xs sm:text-sm font-bold text-brand-green hover:underline block break-all">
+              badanrisetmaqasidlsq.yk@gmail.com
+            </a>
+            <span class="text-[11px] text-slate-400 block">Tanggapan resmi dalam 1×24 jam hari kerja</span>
+          </div>
+        </div>
+
+        <!-- WhatsApp Mas Rifki -->
+        <div class="flex items-start gap-4 pt-4 border-t border-slate-100">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 text-brand-green flex items-center justify-center shrink-0 border border-emerald-200">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block">Contact Person WhatsApp:</span>
+            <div class="text-xs sm:text-sm font-bold text-slate-900">
+              Rifki (<a href="https://wa.me/6285702829379" target="_blank" rel="noopener noreferrer" class="text-brand-green hover:underline">0857-0282-9379</a>)
+            </div>
+            <span class="text-[11px] text-slate-400 block">Pelayanan: Senin – Sabtu, 08.30 – 16.30 WIB</span>
+          </div>
+        </div>
+
+        <a href="https://wa.me/6285702829379?text=Halo%20Mas%20Rifki,%20saya%20ingin%20berkonsultasi%20dengan%20BARISMA" 
+           target="_blank" rel="noopener noreferrer"
+           class="w-full inline-flex items-center justify-center gap-2 py-3 bg-brand-green hover:bg-emerald-800 text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow transition">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+          <span>Kirim Pesan WhatsApp Langsung</span>
+        </a>
+
+      </div>
+
+      <!-- OJS JUSMA Card -->
+      <div class="p-6 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-950 space-y-2">
+        <div class="font-bold text-amber-900 uppercase tracking-wider flex items-center gap-2">
+          <span>Submisi Jurnal Ilmiah (JUSMA)</span>
+        </div>
+        <p class="leading-relaxed">
+          Bagi akademisi yang hendak menyerahkan naskah artikel ilmiah untuk <strong>Jurnal Studi Maqashid Ar-Rohmah (JUSMA)</strong>, submisi dilakukan secara online melalui portal Open Journal System (OJS) tersendiri.
+        </p>
+        <a href="publikasi.html#portal-ojs" class="inline-flex items-center gap-1 font-bold text-amber-800 hover:text-amber-900 underline mt-1">
+          Info Portal JUSMA OJS ↗
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Kolom Kanan: Form Kirim Pesan -->
+    <div class="lg:col-span-7">
+      <div class="card-thinktank p-8 sm:p-10 space-y-6 border border-slate-200">
+        <div>
+          <h3 class="font-serif font-bold text-slate-900 text-2xl">Formulir Pesan &amp; Konsultasi</h3>
+          <p class="text-xs text-slate-500 mt-1">Gunakan formulir ini untuk pendaftaran program, pertanyaan penelitian, atau undangan narasumber.</p>
+        </div>
+
+        <form id="barismaContactForm" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Nama Lengkap *</label>
+              <input type="text" required placeholder="Contoh: Ahmad Baihaqi"
+                class="w-full bg-slate-50 border border-slate-300 rounded-xl py-2.5 px-3.5 text-sm focus:outline-none focus:border-brand-green focus:bg-white focus:ring-2 focus:ring-brand-green/20 transition">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Asal Kampus / Pesantren</label>
+              <input type="text" placeholder="Contoh: UIN Sunan Kalijaga / PP LSQ"
+                class="w-full bg-slate-50 border border-slate-300 rounded-xl py-2.5 px-3.5 text-sm focus:outline-none focus:border-brand-green focus:bg-white focus:ring-2 focus:ring-brand-green/20 transition">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Email Aktif *</label>
+              <input type="email" required placeholder="emailanda@gmail.com"
+                class="w-full bg-slate-50 border border-slate-300 rounded-xl py-2.5 px-3.5 text-sm focus:outline-none focus:border-brand-green focus:bg-white focus:ring-2 focus:ring-brand-green/20 transition">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Nomor WhatsApp *</label>
+              <input type="tel" required placeholder="08xxxxxxxxxx"
+                class="w-full bg-slate-50 border border-slate-300 rounded-xl py-2.5 px-3.5 text-sm focus:outline-none focus:border-brand-green focus:bg-white focus:ring-2 focus:ring-brand-green/20 transition">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Kategori Kepentingan *</label>
+            <select class="w-full bg-slate-50 border border-slate-300 rounded-xl py-2.5 px-3.5 text-sm focus:outline-none focus:border-brand-green focus:bg-white focus:ring-2 focus:ring-brand-green/20 transition">
+              <option value="klinik">Klinik Proposal Tugas Akhir (S1/S2/S3)</option>
+              <option value="jurnal">Pendampingan Penulisan Artikel Jurnal</option>
+              <option value="uzlah">Inkubasi Pascasarjana (Uzlah Akademik)</option>
+              <option value="antologi">Penulisan Buku Antologi Ber-ISBN</option>
+              <option value="opini">Pengiriman Artikel Opini Populer</option>
+              <option value="kemitraan">Kemitraan MoU / Undangan Seminar</option>
+              <option value="lainnya">Lainnya</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Pesan / Rencana Riset Anda *</label>
+            <textarea required rows="4" placeholder="Tuliskan topik kajian yang sedang ditekuni atau informasi yang Anda butuhkan secara terperinci..."
+              class="w-full bg-slate-50 border border-slate-300 rounded-xl py-2.5 px-3.5 text-sm focus:outline-none focus:border-brand-green focus:bg-white focus:ring-2 focus:ring-brand-green/20 transition"></textarea>
+          </div>
+
+          <div class="flex items-start gap-2.5 pt-1">
+            <input type="checkbox" id="consentKontak" required class="mt-1 rounded text-brand-green focus:ring-brand-green">
+            <label for="consentKontak" class="text-xs text-slate-600">Saya mengonfirmasi bahwa data yang diisi benar dan ditujukan untuk korespondensi resmi BARISMA.</label>
+          </div>
+
+          <button type="submit" class="w-full py-3.5 bg-brand-green hover:bg-emerald-800 text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow transition">
+            Kirim Pesan ke Sekretariat
+          </button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- Toast Notification -->
+<div id="toastNotification" class="fixed bottom-6 right-6 z-50 opacity-0 pointer-events-none transition-all duration-300" style="transform:translateY(96px)">
+  <div class="bg-slate-900 text-white border border-slate-700 px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-4">
+    <div class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-lg font-bold">✓</div>
+    <div>
+      <div class="font-bold text-white text-sm">Pesan Berhasil Terkirim!</div>
+      <div class="text-slate-400 text-xs">Sekretariat BARISMA akan segera menghubungi Anda kembali melalui WhatsApp/Email.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-grid">
+        
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <img class="footer-logo" src="assets/images/logo-horizontal.png" alt="BARISMA">
+          <p>
+            Pusat pemikiran (*think-tank*) dan unit pengembangan kapasitas akademik berbasis Tafsir Maqāṣidi di lingkungan Pondok Pesantren LSQ Ar-Rohmah Yogyakarta.
+          </p>
+        </div>
+
+        <!-- Col 1: Navigasi -->
+        <div class="footer-col">
+          <h4>Navigasi</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="tentang.html">Tentang BARISMA</a></li>
+            <li><a href="publikasi.html">Publikasi &amp; Opini</a></li>
+            <li><a href="program.html">Program &amp; Pelatihan</a></li>
+            <li><a href="kemitraan.html">Kemitraan Kampus</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 2: Kanal Publikasi -->
+        <div class="footer-col">
+          <h4>Publikasi</h4>
+          <ul class="footer-links">
+            <li><a href="publikasi.html">Artikel Opini Populer</a></li>
+            <li><a href="publikasi.html">Esai &amp; Refleksi</a></li>
+            <li><a href="publikasi.html">Working Paper &amp; Tesis</a></li>
+            <li><a href="program.html">Buku Antologi Ber-ISBN</a></li>
+            <li><a href="index.html#submit-tulisan" style="color:#34d399; font-weight:600;">Kirim Tulisan / Artikel ✎</a></li>
+            <li><a href="publikasi.html#portal-ojs" style="color:#fcd34d; font-weight:700;">Portal OJS JUSMA ↗</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Sekretariat -->
+        <div class="footer-col">
+          <h4>Sekretariat</h4>
+          <ul class="footer-links">
+            <li>PP LSQ Ar-Rohmah, Yogyakarta</li>
+            <li><a href="mailto:badanrisetmaqasidlsq.yk@gmail.com">badanrisetmaqasidlsq.yk@gmail.com</a></li>
+            <li><a href="https://wa.me/6285702829379" target="_blank" rel="noopener noreferrer">Rifki (0857-0282-9379)</a></li>
+            <li><a href="admin.html" style="color:#34d399;">Portal CMS Editor ↗</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Badan Riset Maqāṣid (BARISMA) — LSQ Ar-Rohmah Yogyakarta. Seluruh hak cipta dilindungi.</div>
+        <div style="display:flex; gap:16px;">
+          <a href="tentang.html">Profil</a>
+          <a href="publikasi.html">Publikasi</a>
+          <a href="kontak.html">Kontak</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a class="whatsapp-float" href="https://wa.me/6285702829379?text=Halo%20Mas%20Rifki,%20saya%20ingin%20konsultasi%20program%20riset%20BARISMA" target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp Mas Rifki">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+    </svg>
+    <span>Chat Mas Rifki</span>
+  </a>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/home.js"></script>
+
+</body>
+</html>

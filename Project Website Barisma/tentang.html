@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Kami — Badan Riset Maqāṣid (BARISMA) | LSQ Ar-Rohmah Yogyakarta</title>
+  <meta name="description" content="Profil kelembagaan, visi-misi, susunan dewan pakar, dan nilai dasar Badan Riset Maqāṣid (BARISMA) di bawah naungan PP LSQ Ar-Rohmah Yogyakarta.">
+
+  <!-- Favicon using official Logo Icon -->
+  <link rel="icon" type="image/png" href="assets/images/logo-icon.png">
+
+  <!-- Google Font: Plus Jakarta Sans (100% Sans-Serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              green: '#166534',
+              greenDark: '#0C291B',
+              greenLight: '#F0FDF4',
+              amber: '#D97706',
+              amberLight: '#FEF3C7',
+              slate: '#0F172A',
+              muted: '#64748B',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            serif: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+</head>
+
+<body class="bg-white text-slate-900 antialiased font-sans">
+
+  <!-- ============================================================
+       TOP UTILITY BAR
+       ============================================================ -->
+  <div class="utility-bar">
+    <div class="container utility-inner">
+      <div class="utility-left">
+        <span class="utility-dot" aria-hidden="true"></span>
+        <span>Pondok Pesantren LSQ Ar-Rohmah · Yogyakarta</span>
+        <span class="utility-separator">|</span>
+        <a href="mailto:badanrisetmaqasidlsq.yk@gmail.com">badanrisetmaqasidlsq.yk@gmail.com</a>
+      </div>
+      <div class="utility-links">
+        <a href="https://wa.me/6285702829379" target="_blank" rel="noopener noreferrer">WA: Rifki (0857-0282-9379)</a>
+        <span class="utility-separator">|</span>
+        <a href="publikasi.html#portal-ojs">Portal OJS JUSMA ↗</a>
+        <span class="utility-separator">|</span>
+        <a href="admin.html">Portal Editor</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MAIN HEADER & DROPDOWN NAVIGATION
+       ============================================================ -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      
+      <!-- Brand Logo -->
+      <a class="brand" href="index.html" aria-label="BARISMA - Beranda">
+        <img src="assets/images/logo-horizontal.png" alt="BARISMA — Badan Riset Maqāṣid">
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-label="Menu Navigasi">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Primary Navigation with Dropdowns -->
+      <nav class="primary-nav" id="primaryNav" aria-label="Navigasi Utama">
+        
+        <!-- Menu 1: Beranda -->
+        <div class="nav-item">
+          <a class="nav-link" href="index.html">Beranda</a>
+        </div>
+
+        <!-- Menu 2: Profil (Dropdown - Active) -->
+        <div class="nav-item has-dropdown">
+          <button class="nav-link dropdown-toggle active" type="button" aria-expanded="false">
+            <span>Profil</span>
+            <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="tentang.html">
+              <span>Tentang BARISMA</span>
+            </a>
+            <a class="dropdown-item" href="tentang.html#visi-misi">
+              <span>Visi, Misi &amp; Nilai</span>
+            </a>
+            <a class="dropdown-item" href="tentang.html#tim">
+              <span>Dewan Pakar &amp; Peneliti</span>
+            </a>
+            <a class="dropdown-item" href="tentang.html#afiliasi">
+              <span>Afiliasi PP LSQ Ar-Rohmah</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Menu 3: Publikasi (Dropdown) -->
+        <div class="nav-item has-dropdown">
+          <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
+            <span>Publikasi &amp; Opini</span>
+            <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="publikasi.html">
+              <span>Semua Publikasi</span>
+            </a>
+            <a class="dropdown-item" href="publikasi.html">
+              <span>Artikel Opini Populer</span>
+            </a>
+            <a class="dropdown-item" href="publikasi.html">
+              <span>Esai &amp; Refleksi Pemikiran</span>
+            </a>
+            <a class="dropdown-item" href="publikasi.html">
+              <span>Working Paper &amp; Tesis</span>
+            </a>
+            <a class="dropdown-item" href="publikasi.html">
+              <span>Resensi Buku &amp; Turats</span>
+            </a>
+            <a class="dropdown-item" href="index.html#submit-tulisan">
+              <span>Kirim Tulisan / Artikel ✎</span>
+              <span class="dropdown-item-badge">Submit</span>
+            </a>
+            <a class="dropdown-item" href="publikasi.html#portal-ojs">
+              <span>Portal OJS JUSMA ↗</span>
+              <span class="dropdown-item-badge">Jurnal</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Menu 4: Program (Dropdown) -->
+        <div class="nav-item has-dropdown">
+          <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
+            <span>Program</span>
+            <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="program.html">
+              <span>Semua Program</span>
+            </a>
+            <a class="dropdown-item" href="program.html">
+              <span>Klinik Proposal Skripsi &amp; Tesis</span>
+            </a>
+            <a class="dropdown-item" href="program.html">
+              <span>Uzlah Akademik Pascasarjana</span>
+            </a>
+            <a class="dropdown-item" href="program.html">
+              <span>Penerbitan Buku Antologi Ber-ISBN</span>
+            </a>
+            <a class="dropdown-item" href="program.html">
+              <span>Workshop Metodologi Riset</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Menu 5: Kemitraan (Dropdown) -->
+        <div class="nav-item has-dropdown">
+          <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
+            <span>Kemitraan</span>
+            <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="dropdown-menu align-right">
+            <a class="dropdown-item" href="kemitraan.html">
+              <span>Kerjasama Kampus &amp; Fakultas</span>
+            </a>
+            <a class="dropdown-item" href="kemitraan.html">
+              <span>Pesantren &amp; Ma'had Aly</span>
+            </a>
+            <a class="dropdown-item" href="kemitraan.html#form-kemitraan">
+              <span>Ajukan MoU Kerjasama</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Menu 6: Kontak -->
+        <div class="nav-item">
+          <a class="nav-link" href="kontak.html">Kontak</a>
+        </div>
+
+      </nav>
+
+    </div>
+  </header>
+
+<!-- ============================================================
+     HERO HEADER (Clean INDEF Think-Tank Style)
+     ============================================================ -->
+<header class="bg-gradient-to-b from-slate-50 via-white to-white py-14 sm:py-18 border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <span class="section-tag mb-3">PROFIL &amp; IDENTITAS KELEMBAGAAN</span>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-900 tracking-tight leading-tight mt-2">
+        Badan Riset Maqāṣid (BARISMA)
+      </h1>
+      <p class="text-base sm:text-lg text-slate-600 mt-4 leading-relaxed font-sans">
+        Pusat studi dan pemikiran (*think-tank*) berbasis pesantren yang mendedikasikan diri pada pengembangan metodologi <strong>Tafsir Maqāṣidi</strong>, riset sosial-humaniora kontekstual, dan pembinaan kapasitas akademik mahasiswa santri di Indonesia.
+      </p>
+    </div>
+  </div>
+</header>
+
+<!-- Breadcrumb -->
+<div class="bg-white border-b border-slate-200/80 py-3 text-xs text-slate-500">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+    <a href="index.html" class="hover:text-brand-green font-medium">Beranda</a>
+    <span>/</span>
+    <span class="text-slate-900 font-semibold">Tentang Kami</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     MAIN CONTENT
+     ============================================================ -->
+<main class="py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+  <!-- Ringkasan Profil & Latar Belakang -->
+  <section class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+    <div class="lg:col-span-5 space-y-6">
+      <div class="card-thinktank p-8 space-y-6 bg-slate-50/70 border border-slate-200">
+        <div class="flex items-center gap-4 pb-4 border-b border-slate-200">
+          <img src="assets/images/logo-icon.png" alt="Emblem BARISMA" class="w-14 h-14 object-contain">
+          <div>
+            <div class="font-serif font-bold text-lg text-slate-900">BARISMA</div>
+            <div class="text-xs text-brand-green font-bold uppercase tracking-wider">Badan Riset Maqāṣid</div>
+          </div>
+        </div>
+
+        <div class="space-y-3.5 text-xs text-slate-600">
+          <div class="flex justify-between py-1.5 border-b border-slate-200/80">
+            <span class="text-slate-500 font-medium">Institusi Induk</span>
+            <span class="text-slate-900 font-bold text-right">PP LSQ Ar-Rohmah</span>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-slate-200/80">
+            <span class="text-slate-500 font-medium">Kedudukan</span>
+            <span class="text-slate-900 font-bold text-right">Yogyakarta, Indonesia</span>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-slate-200/80">
+            <span class="text-slate-500 font-medium">Fokus Keilmuan</span>
+            <span class="text-slate-900 font-bold text-right">Tafsir Maqāṣidi &amp; Soshum</span>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-slate-200/80">
+            <span class="text-slate-500 font-medium">Pendekatan Riset</span>
+            <span class="text-slate-900 font-bold text-right">Filologis, Dialektis &amp; Empiris</span>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-slate-200/80">
+            <span class="text-slate-500 font-medium">Kanal Jurnal Ilmiah</span>
+            <span class="text-amber-700 font-bold text-right">JUSMA (OJS Terpisah)</span>
+          </div>
+          <div class="flex justify-between py-1.5">
+            <span class="text-slate-500 font-medium">Narahubung</span>
+            <a href="https://wa.me/6285702829379" class="text-brand-green font-bold hover:underline">Rifki (0857-0282-9379)</a>
+          </div>
+        </div>
+
+        <a href="https://wa.me/6285702829379?text=Halo%20Mas%20Rifki,%20saya%20ingin%20konsultasi%20program%20riset%20BARISMA" 
+           target="_blank" rel="noopener noreferrer"
+           class="block w-full text-center py-3 bg-brand-green hover:bg-emerald-800 text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow transition">
+          Hubungi Sekretariat Riset
+        </a>
+      </div>
+    </div>
+
+    <div class="lg:col-span-7 space-y-6 text-slate-700 text-base leading-relaxed text-justify font-sans">
+      <h2 class="font-serif text-2xl sm:text-3xl font-bold text-slate-900 leading-snug">
+        Menjembatani Tradisi Kitab Kuning dengan Metodologi Riset Kontemporer
+      </h2>
+      <p class="dropcap">
+        Badan Riset Maqāṣid (BARISMA) berakar dari kebutuhan objektif dunia akademik pesantren untuk mentransformasikan khazanah intelektual klasik ke dalam format analisis modern. Bertempat di Pondok Pesantren Lingkar Studi Qur'an (LSQ) Ar-Rohmah Yogyakarta, BARISMA memadukan ketelitian pembacaan teks keislaman dengan pisau analisis ilmu sosial-humaniora mutakhir.
+      </p>
+      <p>
+        Banyak sarjana muda muslim dan santri pascasarjana memiliki penguasaan naskah Arab yang kuat, namun menghadapi kendala saat mengonstruksi argumen riset, menyusun <em>novelty</em> akademik, atau menembus jurnal bereputasi nasional maupun internasional. BARISMA hadir untuk mendampingi transisi metodologis tersebut melalui klinik proposal, inkubasi penulisan jurnal, dan penerbitan antologi buku ilmiah.
+      </p>
+      <p>
+        Melalui bimbingan langsung para dewan pakar yang dipimpin oleh <strong>Prof. Dr. Abdul Mustaqim, M.Ag.</strong>, BARISMA memosisikan <em>Tafsir Maqāṣidi</em> bukan sekadar diskursus teoretis, melainkan instrumen terapan untuk menjawab krisis etika publik, keadilan lingkungan, perubahan hukum keluarga, dan dinamika transformasi digital.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       DEWAN PAKAR & PENELITI (INDEF-Style Profiling)
+       ============================================================ -->
+  <section class="space-y-8 pt-6 border-t border-slate-200">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <div>
+        <span class="section-tag mb-2">PROFILING PAKAR &amp; PENELITI</span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-slate-900 mt-2">
+          Dewan Pakar &amp; Pengelola Riset
+        </h2>
+        <p class="text-sm text-slate-600 mt-1">Akademisi terkemuka, mentor metodologi, dan penggerak riset di lingkungan LSQ Ar-Rohmah.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Pakar 1: Prof. Abdul Mustaqim -->
+      <div class="card-thinktank p-6 flex flex-col justify-between space-y-5">
+        <div class="space-y-4">
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-900 text-amber-300 font-serif font-bold text-xl flex items-center justify-center shrink-0 border border-emerald-700 shadow-sm">
+              AM
+            </div>
+            <div>
+              <h3 class="font-serif font-bold text-slate-900 text-lg leading-tight">Prof. Dr. Abdul Mustaqim</h3>
+              <div class="text-xs text-brand-green font-bold mt-0.5">Dewan Pembina / Guru Besar</div>
+            </div>
+          </div>
+          <div class="text-xs text-slate-500 font-medium">
+            Guru Besar Studi Al-Qur'an &amp; Tafsir UIN Sunan Kalijaga Yogyakarta · Pengasuh PP LSQ Ar-Rohmah
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed text-justify">
+            Pelopor epistemologi Tafsir Maqāṣidi di Indonesia. Penulis produktif puluhan buku rujukan tafsir dan reviewer berbagai jurnal bereputasi internasional.
+          </p>
+        </div>
+        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+          <span class="badge-tag bg-emerald-50 text-emerald-800">Tafsir Maqāṣidi</span>
+          <a href="publikasi.html" class="text-brand-green font-bold hover:underline">Lihat Artikel →</a>
+        </div>
+      </div>
+
+      <!-- Pakar 2: Dr. Ahmad Rofiq -->
+      <div class="card-thinktank p-6 flex flex-col justify-between space-y-5">
+        <div class="space-y-4">
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-slate-800 text-white font-serif font-bold text-xl flex items-center justify-center shrink-0 border border-slate-700 shadow-sm">
+              AR
+            </div>
+            <div>
+              <h3 class="font-serif font-bold text-slate-900 text-lg leading-tight">Dr. Ahmad Rofiq, M.A.</h3>
+              <div class="text-xs text-brand-green font-bold mt-0.5">Dewan Pakar Metodologi</div>
+            </div>
+          </div>
+          <div class="text-xs text-slate-500 font-medium">
+            Pakar Filologi Naskah Nusantara &amp; Metodologi Penelitian Sosial Keagamaan
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed text-justify">
+            Fokus riset mencakup studi kodikologi manuskrip tafsir pegon pesantren abad 19 serta hermeneutika hadis kontekstual di Asia Tenggara.
+          </p>
+        </div>
+        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+          <span class="badge-tag bg-amber-50 text-amber-800">Filologi &amp; Hadis</span>
+          <a href="publikasi.html" class="text-brand-green font-bold hover:underline">Lihat Artikel →</a>
+        </div>
+      </div>
+
+      <!-- Pengelola: M. Maulana Rifki -->
+      <div class="card-thinktank p-6 flex flex-col justify-between space-y-5">
+        <div class="space-y-4">
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-amber-500/20 text-amber-800 font-serif font-bold text-xl flex items-center justify-center shrink-0 border border-amber-300 shadow-sm">
+              MR
+            </div>
+            <div>
+              <h3 class="font-serif font-bold text-slate-900 text-lg leading-tight">M. Maulana Rifki</h3>
+              <div class="text-xs text-brand-green font-bold mt-0.5">Sekretaris Eksekutif &amp; Koordinator</div>
+            </div>
+          </div>
+          <div class="text-xs text-slate-500 font-medium">
+            Koordinator Klinik Riset &amp; Layanan Kerjasama Akademik BARISMA
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed text-justify">
+            Mengelola operasional riset harian, penerimaan konsultasi tugas akhir santri/mahasiswa, penjadwalan uzlah akademik, dan korespondensi kelembagaan.
+          </p>
+        </div>
+        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+          <span class="badge-tag bg-slate-100 text-slate-700">Manajemen Riset</span>
+          <a href="https://wa.me/6285702829379" target="_blank" class="text-brand-green font-bold hover:underline">Kontak WA →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       VISI, MISI & TIGA PILAR NILAI
+       ============================================================ -->
+  <section class="bg-slate-50 p-8 sm:p-12 rounded-3xl border border-slate-200 space-y-12">
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+      <div class="space-y-4">
+        <span class="section-tag">VISI STRATEGIS 2030</span>
+        <h3 class="font-serif text-2xl font-bold text-slate-900 leading-snug">
+          Pusat Kajian Maqāṣid Berkemajuan
+        </h3>
+        <p class="text-sm text-slate-600 leading-relaxed text-justify">
+          Menjadi pusat riset dan pemikiran terdepan di Asia Tenggara yang mengartikulasikan nilai-nilai kemaslahatan Al-Qur'an untuk memandu kebijakan etis, kemanusiaan, dan kemandirian keilmuan pesantren.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <span class="section-tag">MISI KELEMBAGAAN</span>
+        <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600">
+          <li class="flex items-start gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-green mt-2 shrink-0"></span>
+            <span>Menyelenggarakan pendampingan intensif penulisan skripsi, tesis, dan disertasi berbasis Tafsir Maqāṣidi.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-green mt-2 shrink-0"></span>
+            <span>Mempublikasikan artikel opini populer, esai pemikiran keislaman, dan buku antologi ber-ISBN secara berkala.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-green mt-2 shrink-0"></span>
+            <span>Membangun jejaring kolaborasi riset dengan fakultas ushuluddin dan lembaga keilmuan nasional.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-green mt-2 shrink-0"></span>
+            <span>Menyokong ekosistem penerbitan berkala ilmiah melalui portal jurnal OJS JUSMA.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Tiga Pilar Nilai -->
+    <div class="pt-8 border-t border-slate-200">
+      <div class="text-center max-w-xl mx-auto space-y-2 mb-8">
+        <h3 class="font-serif text-2xl font-bold text-slate-900">Tiga Pilar Nilai Kelembagaan</h3>
+        <p class="text-xs text-slate-500">Pondasi etis dan epistemologis dalam setiap gerak riset dan pengabdian BARISMA.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="card-thinktank p-6 text-center space-y-3 bg-white">
+          <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-50 text-emerald-800 font-serif font-bold text-xl flex items-center justify-center border border-emerald-200">
+            ١
+          </div>
+          <h4 class="font-serif font-bold text-slate-900 text-lg">Spiritualitas</h4>
+          <p class="text-xs text-slate-600 leading-relaxed text-justify">
+            Menjaga keikhlasan niat, kerendahan hati akademis (<em>adab al-bahits</em>), serta keberkahan ilmu yang bersumber dari tradisi tasawuf dan nafas ibadah pesantren.
+          </p>
+        </div>
+
+        <div class="card-thinktank p-6 text-center space-y-3 bg-white">
+          <div class="w-12 h-12 mx-auto rounded-xl bg-amber-50 text-amber-800 font-serif font-bold text-xl flex items-center justify-center border border-amber-200">
+            ٢
+          </div>
+          <h4 class="font-serif font-bold text-slate-900 text-lg">Intelektualitas</h4>
+          <p class="text-xs text-slate-600 leading-relaxed text-justify">
+            Kedisiplinan metodologis, ketajaman telaah kritis, kejujuran ilmiah dalam sitasi, serta keterbukaan dialog terhadap dialektika sosial-humaniora modern.
+          </p>
+        </div>
+
+        <div class="card-thinktank p-6 text-center space-y-3 bg-white">
+          <div class="w-12 h-12 mx-auto rounded-xl bg-slate-100 text-slate-800 font-serif font-bold text-xl flex items-center justify-center border border-slate-200">
+            ٣
+          </div>
+          <h4 class="font-serif font-bold text-slate-900 text-lg">Profesionalitas</h4>
+          <p class="text-xs text-slate-600 leading-relaxed text-justify">
+            Standar tata kelola penerbitan, kepatuhan etika riset, ketepatan waktu, dan akuntabilitas dalam setiap kemitraan dengan perguruan tinggi mitra.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       HUBUNGAN DENGAN LSQ & JUSMA OJS GATEWAY
+       ============================================================ -->
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="card-thinktank p-8 space-y-4">
+      <div class="flex items-center gap-3">
+        <span class="w-3 h-3 rounded-full bg-brand-green"></span>
+        <h3 class="font-serif font-bold text-slate-900 text-xl">Afiliasi PP LSQ Ar-Rohmah</h3>
+      </div>
+      <p class="text-sm text-slate-600 leading-relaxed text-justify">
+        BARISMA berkedudukan di lingkungan Pondok Pesantren Lingkar Studi Qur'an (LSQ) Ar-Rohmah Yogyakarta. Santri dan peneliti memiliki akses ke perpustakaan pesantren, ruang diskusi maqashid, serta program inkubasi "Uzlah Akademik" yang memadukan kedalaman zikir dengan ketenangan menulis.
+      </p>
+      <div class="pt-2 text-xs font-semibold text-brand-green">
+        Kompleks PP LSQ Ar-Rohmah, Yogyakarta · D.I. Yogyakarta
+      </div>
+    </div>
+
+    <div class="card-thinktank p-8 space-y-4 border-l-4 border-amber-500">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+          <h3 class="font-serif font-bold text-slate-900 text-xl">Portal Jurnal OJS (JUSMA)</h3>
+        </div>
+        <span class="badge-tag bg-amber-100 text-amber-800">OJS Gateway</span>
+      </div>
+      <p class="text-sm text-slate-600 leading-relaxed text-justify">
+        Untuk penerbitan naskah ilmiah formal berskala nasional/internasional, redaksi mengelola <strong>Jurnal Studi Maqashid Ar-Rohmah (JUSMA)</strong> melalui portal Open Journal System (OJS) independen. Naskah dinilai secara <em>double-blind peer review</em>.
+      </p>
+      <div class="pt-2">
+        <a href="publikasi.html#portal-ojs" class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 hover:text-amber-900 transition">
+          <span>Pelajari Alur Submisi OJS JUSMA</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Hubungi Mas Rifki -->
+  <section class="p-8 sm:p-12 bg-slate-900 text-white rounded-3xl flex flex-col md:flex-row items-center justify-between gap-8">
+    <div class="space-y-2 max-w-xl">
+      <div class="text-amber-400 text-xs font-bold uppercase tracking-wider">Konsultasi Kelembagaan &amp; Riset</div>
+      <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white">Ingin Bermitra atau Berkonsultasi?</h3>
+      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+        Silakan hubungi koordinator BARISMA (Mas Rifki) untuk informasi program pembinaan tesis, workshop maqashid, maupun kerjasama MoU fakultas.
+      </p>
+    </div>
+    <div class="flex flex-col sm:flex-row gap-3 shrink-0 w-full sm:w-auto">
+      <a href="https://wa.me/6285702829379?text=Halo%20Mas%20Rifki,%20saya%20ingin%20konsultasi%20program%20riset%20BARISMA" 
+         target="_blank" rel="noopener noreferrer"
+         class="px-6 py-3.5 bg-brand-green hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow text-center transition">
+        Chat WA Rifki (0857-0282-9379)
+      </a>
+      <a href="kontak.html" class="px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-xs uppercase tracking-wider rounded-xl text-center transition">
+        Kirim Surat Resmi
+      </a>
+    </div>
+  </section>
+
+</main>
+
+  <!-- ============================================================
+       FOOTER (Consistent with index.html)
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-grid">
+        
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <img src="assets/images/logo-horizontal.png" alt="BARISMA — Badan Riset Maqāṣid">
+          <p>
+            Lembaga otonom di bawah naungan PP LSQ Ar-Rohmah Yogyakarta yang berfokus pada riset keislaman aplikatif, metodologi Tafsir Maqāṣidi, publikasi pemikiran populer, dan akselerasi karya akademik.
+          </p>
+        </div>
+
+        <!-- Col 1: Navigasi -->
+        <div class="footer-col">
+          <h4>Navigasi</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="tentang.html">Tentang BARISMA</a></li>
+            <li><a href="publikasi.html">Publikasi &amp; Opini</a></li>
+            <li><a href="program.html">Program &amp; Pelatihan</a></li>
+            <li><a href="kemitraan.html">Kemitraan Kampus</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 2: Kanal Publikasi -->
+        <div class="footer-col">
+          <h4>Publikasi</h4>
+          <ul class="footer-links">
+            <li><a href="publikasi.html">Artikel Opini Populer</a></li>
+            <li><a href="publikasi.html">Esai &amp; Refleksi</a></li>
+            <li><a href="publikasi.html">Working Paper &amp; Tesis</a></li>
+            <li><a href="program.html">Buku Antologi Ber-ISBN</a></li>
+            <li><a href="index.html#submit-tulisan" style="color:#34d399; font-weight:600;">Kirim Tulisan / Artikel ✎</a></li>
+            <li><a href="publikasi.html#portal-ojs" style="color:#fcd34d; font-weight:700;">Portal OJS JUSMA ↗</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Sekretariat -->
+        <div class="footer-col">
+          <h4>Sekretariat</h4>
+          <ul class="footer-links">
+            <li>PP LSQ Ar-Rohmah, Yogyakarta</li>
+            <li><a href="mailto:badanrisetmaqasidlsq.yk@gmail.com">badanrisetmaqasidlsq.yk@gmail.com</a></li>
+            <li><a href="https://wa.me/6285702829379" target="_blank" rel="noopener noreferrer">Rifki (0857-0282-9379)</a></li>
+            <li><a href="admin.html" style="color:#34d399;">Portal CMS Editor ↗</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Badan Riset Maqāṣid (BARISMA) — LSQ Ar-Rohmah Yogyakarta. Seluruh hak cipta dilindungi.</div>
+        <div style="display:flex; gap:16px;">
+          <a href="tentang.html">Profil</a>
+          <a href="publikasi.html">Publikasi</a>
+          <a href="kontak.html">Kontak</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a class="whatsapp-float" href="https://wa.me/6285702829379?text=Halo%20Mas%20Rifki,%20saya%20ingin%20konsultasi%20program%20riset%20BARISMA" target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp Mas Rifki">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+    </svg>
+    <span>Chat Mas Rifki</span>
+  </a>
+
+  <!-- Script -->
+  <script src="assets/js/home.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#166534">
+  <title>BARISMA — Badan Riset Maqāṣid | LSQ Ar-Rohmah Yogyakarta</title>
+  <meta name="description" content="Pusat riset keislaman, kajian sosial-humaniora, dan publikasi artikel pemikiran berbasis Tafsir Maqāṣidi di lingkungan PP LSQ Ar-Rohmah Yogyakarta.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/logo-icon.png">
+
+  <!-- Google Font: Plus Jakarta Sans (100% Sans-Serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Swiper Slider CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/home.css">
+</head>
+
+<body>
+
+  <!-- ============================================================
+       TOP UTILITY BAR
+       ============================================================ -->
+  <div class="utility-bar">
+    <div class="container utility-inner">
+      <div class="utility-left">
+        <span class="utility-dot" aria-hidden="true"></span>
+        <span>Pondok Pesantren LSQ Ar-Rohmah · Yogyakarta</span>
+        <span class="utility-separator">|</span>
+        <a href="mailto:badanrisetmaqasidlsq.yk@gmail.com">badanrisetmaqasidlsq.yk@gmail.com</a>
+      </div>
+      <div class="utility-links">
+        <a href="https://wa.me/6285702829379" target="_blank" rel="noopener noreferrer">WA: Rifki (0857-0282-9379)</a>
+        <span class="utility-separator">|</span>
+        <a href="#portal-ojs">Portal OJS JUSMA ↗</a>
+        <span class="utility-separator">|</span>
+        <a href="admin.html">Portal Editor</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MAIN HEADER & DROPDOWN NAVIGATION
+       ============================================================ -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      
+      <!-- Brand Logo -->
+      <a class="brand" href="index.html" aria-label="BARISMA - Beranda">
+        <img src="assets/images/logo-horizontal.png" alt="BARISMA — Badan Riset Maqāṣid">
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-label="Menu Navigasi">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Primary Navigation with Dropdowns -->
+      <nav class="primary-nav" id="primaryNav" aria-label="Navigasi Utama">
+        
+        <!-- Menu 1: Beranda -->
+        <div class="nav-item">
+          <a class="nav-link active" href="index.html">Beranda</a>
+        </div>
+
+        <!-- Menu 2: Profil (Dropdown) -->
+        <div class="nav-item has-dropdown">
+          <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
+            <span>Profil</span>
+            <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="tentang.html">
+              <span>Tentang BARISMA</span>
+            </a>
+            <a class="dropdown-item" href="tentang.html#visi-misi">
+              <span>Visi, Misi &amp; Nilai</span>
+            </a>
+            <a class="dropdown-item" href="tentang.html#tim">
+              <span>Dewan Pakar &amp; Peneliti</span>
+            </a>
+            <a class="dropdown-item" href="tentang.html#afiliasi">
+              <span>Afiliasi PP LSQ Ar-Rohmah</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Menu 3: Publikasi (Dropdown) -->
+        <div class="nav-item has-dropdown">
+          <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
+            <span>Publikasi &amp; Opini</span>
+            <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="publikasi.html">
+              <span>Semua Publikasi</span>
+            </a>
+            <a class="dropdown-item" href="publikasi.html">
+              <span>Artikel Opini Populer</span>
+            </a>
+            <a class="dropdown-item" href="publikasi.html">
+              <span>Esai &amp; Refleksi Pemikiran</span>
+            </a>
+            <a class="dropdown-item" href="publikasi.html">
+              <span>Working Paper &amp; Tesis</span>
+            </a>
+            <a class="dropdown-item" href="publikasi.html">
+              <span>Resensi Buku &amp; Turats</span>
+            </a>
+            <a class="dropdown-item" href="#submit-tulisan">
+              <span>Kirim Tulisan / Artikel ✎</span>
+              <span class="dropdown-item-badge">Submit</span>
+            </a>
+            <a class="dropdown-item" href="publikasi.html#portal-ojs">
+              <span>Portal OJS JUSMA ↗</span>
+              <span class="dropdown-item-badge">Jurnal</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Menu 4: Program (Dropdown) -->
+        <div class="nav-item has-dropdown">
+          <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
+            <span>Program</span>
+            <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="program.html">
+              <span>Semua Program</span>
+            </a>
+            <a class="dropdown-item" href="program.html">
+              <span>Klinik Proposal Skripsi &amp; Tesis</span>
+            </a>
+            <a class="dropdown-item" href="program.html">
+              <span>Uzlah Akademik Pascasarjana</span>
+            </a>
+            <a class="dropdown-item" href="program.html">
+              <span>Penerbitan Buku Antologi Ber-ISBN</span>
+            </a>
+            <a class="dropdown-item" href="program.html">
+              <span>Workshop Metodologi Riset</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Menu 5: Kemitraan (Dropdown) -->
+        <div class="nav-item has-dropdown">
+          <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
+            <span>Kemitraan</span>
+            <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="dropdown-menu align-right">
+            <a class="dropdown-item" href="kemitraan.html">
+              <span>Kerjasama Kampus &amp; Fakultas</span>
+            </a>
+            <a class="dropdown-item" href="kemitraan.html">
+              <span>Pesantren &amp; Ma'had Aly</span>
+            </a>
+            <a class="dropdown-item" href="kemitraan.html#form-kemitraan">
+              <span>Ajukan MoU Kerjasama</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Menu 6: Kontak -->
+        <div class="nav-item">
+          <a class="nav-link" href="kontak.html">Kontak</a>
+        </div>
+
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HERO SECTION (Full-Width Photo Documentation Slider Behind Title)
+       ============================================================ -->
+  <section class="hero-section">
+    <!-- Swiper Photo Documentation Slider (Behind Headline Text) -->
+    <div class="swiper hero-swiper" aria-hidden="true">
+      <div class="swiper-wrapper">
+        
+        <!-- Slide 1: Pelatihan & Workshop Riset -->
+        <div class="swiper-slide hero-slide">
+          <img class="hero-slide-img" src="assets/images/dokumentasi-1.jpg" alt="Dokumentasi Pelatihan Riset BARISMA" loading="eager">
+          <div class="hero-slide-overlay"></div>
+        </div>
+
+        <!-- Slide 2: Diskusi Akademik & Uzlah Maqāṣid -->
+        <div class="swiper-slide hero-slide">
+          <img class="hero-slide-img" src="assets/images/dokumentasi-2.jpg" alt="Dokumentasi Diskusi Peneliti Maqashid" loading="lazy">
+          <div class="hero-slide-overlay"></div>
+        </div>
+
+        <!-- Slide 3: Klinik Metodologi Tesis & Skripsi -->
+        <div class="swiper-slide hero-slide">
+          <img class="hero-slide-img" src="assets/images/dokumentasi-3.jpg" alt="Dokumentasi Klinik Riset Santri & Mahasiswa" loading="lazy">
+          <div class="hero-slide-overlay"></div>
+        </div>
+
+      </div>
+
+      <!-- Swiper Pagination Bullets (Di Bawah Slide) -->
+      <div class="swiper-pagination hero-swiper-pagination"></div>
+    </div>
+
+    <!-- Foreground Content Layer: Judul Utama & Call to Action -->
+    <div class="hero-content-layer">
+      <div class="container">
+        <div class="hero-content-box">
+          <span class="badge-tag hero-badge">Badan Riset Maqāṣid · PP LSQ Ar-Rohmah</span>
+          <h1 class="hero-title-white">
+            Pusat Riset Keislaman &amp; <span>Publikasi Pemikiran Maqāṣid</span>
+          </h1>
+          <p class="hero-desc-white">
+            Mengembangkan tradisi keilmuan pesantren menjadi riset sosial-humaniora dan studi Al-Qur'an kontemporer yang aplikatif, kritis, dan berorientasi kemaslahatan publik.
+          </p>
+
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="publikasi.html">
+              Jelajahi Publikasi →
+            </a>
+            <a class="btn btn-hero-outline" href="program.html">
+              Lihat Program Riset
+            </a>
+          </div>
+
+          <!-- Clean Stat Highlight in Glass Overlay -->
+          <div class="hero-stats-glass">
+            <div class="stat-item">
+              <strong>2016</strong>
+              <span>Tahun Berdiri</span>
+            </div>
+            <div class="stat-item">
+              <strong>4 Pilar</strong>
+              <span>Layanan Riset</span>
+            </div>
+            <div class="stat-item">
+              <strong>JUSMA</strong>
+              <span>Portal Jurnal OJS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOKUS KERJA LEMBAGA (4 PILAR MINIMALIS)
+       ============================================================ -->
+  <section class="section">
+    <div class="container">
+      
+      <div class="section-header">
+        <div>
+          <span class="section-kicker">Layanan &amp; Aktivitas</span>
+          <h2 class="section-title">Empat Pilar Gerak Lembaga</h2>
+        </div>
+        <p class="section-subtitle">
+          Ruang akselerasi riset akademik bagi santri, mahasiswa pascasarjana, dan peneliti.
+        </p>
+      </div>
+
+      <div class="pillar-grid">
+        
+        <!-- Pilar 1 -->
+        <div class="pillar-card">
+          <div>
+            <span class="pillar-num">01</span>
+            <h3 class="pillar-title">Klinik Proposal</h3>
+            <p class="pillar-desc">
+              Pendampingan metodologi, pemetaan gap riset, dan bimbingan penulisan skripsi, tesis, serta disertasi.
+            </p>
+          </div>
+          <a class="pillar-link" href="program.html">
+            Pelajari Layanan →
+          </a>
+        </div>
+
+        <!-- Pilar 2 -->
+        <div class="pillar-card">
+          <div>
+            <span class="pillar-num">02</span>
+            <h3 class="pillar-title">Artikel &amp; Opini Populer</h3>
+            <p class="pillar-desc">
+              Diseminasi artikel opini populer di media massa, esai pemikiran keislaman kontemporer, dan publikasi gagasan santri.
+            </p>
+          </div>
+          <a class="pillar-link" href="publikasi.html">
+            Jelajahi Artikel →
+          </a>
+        </div>
+
+        <!-- Pilar 3 -->
+        <div class="pillar-card">
+          <div>
+            <span class="pillar-num">03</span>
+            <h3 class="pillar-title">Buku Antologi</h3>
+            <p class="pillar-desc">
+              Penerbitan buku riset bunga rampai ber-ISBN resmi hasil kolaborasi riset santri dan alumni.
+            </p>
+          </div>
+          <a class="pillar-link" href="program.html">
+            Katalog Buku →
+          </a>
+        </div>
+
+        <!-- Pilar 4 -->
+        <div class="pillar-card">
+          <div>
+            <span class="pillar-num">04</span>
+            <h3 class="pillar-title">Uzlah Akademik</h3>
+            <p class="pillar-desc">
+              Karantina penulisan intensif tugas akhir di lingkungan tenang pesantren PP LSQ Ar-Rohmah.
+            </p>
+          </div>
+          <a class="pillar-link" href="program.html">
+            Jadwal Uzlah →
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PUBLIKASI & OPINI TERKINI (CLEAN THINK-TANK CARDS)
+       ============================================================ -->
+  <section class="section section-alt">
+    <div class="container">
+      
+      <div class="section-header">
+        <div>
+          <span class="section-kicker">Wawasan Populer</span>
+          <h2 class="section-title">Publikasi &amp; Opini Terbaru</h2>
+        </div>
+        <a class="btn btn-outline btn-sm" href="publikasi.html">
+          Lihat Semua Tulisan →
+        </a>
+      </div>
+
+      <!-- Spotlight Kajian Utama Terkini (Dipindahkan dari Hero agar Proporsional) -->
+      <article class="spotlight-card">
+        <div>
+          <div class="spotlight-header">
+            <span class="category-badge badge-opini">Kajian Utama Terkini</span>
+            <span style="font-size: 13.5px; color: var(--slate-500); font-weight: 500;">02 November 2026</span>
+          </div>
+          <h3 class="spotlight-title">
+            <a href="artikel-detail.html">
+              Epistemologi Maqāṣid: Menemukan Kemaslahatan di Tengah Turbulensi Sosial
+            </a>
+          </h3>
+          <p class="spotlight-summary">
+            Bagaimana cara kerja Tafsir Maqāṣidi dalam membedah isu sosial-kontemporer tanpa tercerabut dari teks suci? Ulasan mendalam prinsip perlindungan kemaslahatan publik dan keadilan substantif di era modern.
+          </p>
+          <a class="btn btn-primary btn-sm" href="artikel-detail.html">
+            Baca Kajian Lengkap →
+          </a>
+        </div>
+        <div class="spotlight-author-box">
+          <div class="spotlight-author-info">
+            <div class="author-avatar">AM</div>
+            <div class="author-info">
+              <strong>Prof. Dr. Abdul Mustaqim</strong>
+              <span>Guru Besar Studi Al-Qur'an &amp; Pembina BARISMA</span>
+            </div>
+          </div>
+          <div style="font-size: 13px; color: var(--slate-500); line-height: 1.5; border-top: 1px dashed var(--slate-200); padding-top: 12px;">
+            Fokus: Epistemologi Tafsir Maqāṣidi &amp; Metodologi Kajian Keislaman Terapan.
+          </div>
+        </div>
+      </article>
+
+      <div class="articles-grid">
+        
+        <!-- Artikel 1 -->
+        <article class="article-card">
+          <div>
+            <div class="article-card-header">
+              <span class="category-badge badge-opini">Opini Populer</span>
+              <span>28 Okt 2026</span>
+            </div>
+            <h3 class="article-card-title">
+              <a href="artikel-detail.html">
+                Integrasi AI dalam Riset Keislaman: Batas Etik &amp; Analisis Bibliometrik
+              </a>
+            </h3>
+            <p class="article-card-desc">
+              Menelaah batas etika akademik saat menggunakan perangkat AI dalam sintesis naskah tafsir dan hadis.
+            </p>
+          </div>
+          <div class="article-card-footer">
+            <span>Tim Riset BARISMA</span>
+            <a href="artikel-detail.html">Baca →</a>
+          </div>
+        </article>
+
+        <!-- Artikel 2 -->
+        <article class="article-card">
+          <div>
+            <div class="article-card-header">
+              <span class="category-badge badge-opini">Opini Populer</span>
+              <span>20 Okt 2026</span>
+            </div>
+            <h3 class="article-card-title">
+              <a href="artikel-detail.html">
+                Living Hadis di Era Komputasi: Transformasi Ritual Pesantren
+              </a>
+            </h3>
+            <p class="article-card-desc">
+              Kajian etnografis mengenai artikulasi nilai-nilai kenabian oleh generasi santri di ruang media digital.
+            </p>
+          </div>
+          <div class="article-card-footer">
+            <span>M. Maulana Rifki</span>
+            <a href="artikel-detail.html">Baca →</a>
+          </div>
+        </article>
+
+        <!-- Artikel 3 -->
+        <article class="article-card">
+          <div>
+            <div class="article-card-header">
+              <span class="category-badge badge-paper">Working Paper</span>
+              <span>14 Okt 2026</span>
+            </div>
+            <h3 class="article-card-title">
+              <a href="artikel-detail.html">
+                Filologi Tafsir Nusantara: Tradisi Keilmuan Pesantren Abad 19
+              </a>
+            </h3>
+            <p class="article-card-desc">
+              Kajian kodikologis terhadap manuskrip tafsir pegon Jawa yang memperlihatkan dinamika adaptasi lokal.
+            </p>
+          </div>
+          <div class="article-card-footer">
+            <span>Dr. Ahmad Rofiq, M.A.</span>
+            <a href="artikel-detail.html">Baca →</a>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       DEWAN PAKAR & PENELITI
+       ============================================================ -->
+  <section class="section">
+    <div class="container">
+      
+      <div class="section-header">
+        <div>
+          <span class="section-kicker">Profil Keilmuan</span>
+          <h2 class="section-title">Dewan Pakar &amp; Pengelola Riset</h2>
+        </div>
+        <a class="btn btn-outline btn-sm" href="tentang.html#tim">
+          Profil Lengkap →
+        </a>
+      </div>
+
+      <div class="experts-grid">
+        
+        <!-- Pakar 1 -->
+        <div class="expert-card">
+          <div class="expert-avatar">AM</div>
+          <h3>Prof. Dr. Abdul Mustaqim</h3>
+          <div class="expert-role">Dewan Pembina / Guru Besar</div>
+          <p class="expert-desc">
+            Guru Besar Studi Al-Qur'an UIN Sunan Kalijaga Yogyakarta &amp; Pengasuh PP LSQ Ar-Rohmah. Pelopor epistemologi Tafsir Maqāṣidi di Indonesia.
+          </p>
+        </div>
+
+        <!-- Pakar 2 -->
+        <div class="expert-card">
+          <div class="expert-avatar">AR</div>
+          <h3>Dr. Ahmad Rofiq, M.A.</h3>
+          <div class="expert-role">Dewan Penelaah Metodologi</div>
+          <p class="expert-desc">
+            Pakar filologi naskah keislaman Nusantara, kajian living Islam, dan metodologi riset integratif interdisipliner.
+          </p>
+        </div>
+
+        <!-- Pengelola 3 -->
+        <div class="expert-card">
+          <div class="expert-avatar">MR</div>
+          <h3>M. Maulana Rifki</h3>
+          <div class="expert-role">Sekretaris &amp; Koordinator Program</div>
+          <p class="expert-desc">
+            Mengelola koordinasi operasional riset, jadwal klinik proposal, layanan kemitraan, dan konsultasi program BARISMA.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SUBMIT TULISAN ARTIKEL WEB (LANGSUNG KE PORTAL ADMIN)
+       ============================================================ -->
+  <section class="section section-alt" id="submit-tulisan">
+    <div class="container">
+      <div class="submit-banner">
+        <div class="submit-info">
+          <span class="submit-kicker">Kanal Penulis &amp; Kontributor</span>
+          <h3>Kirim Naskah &amp; Artikel Pemikiran ke Web BARISMA</h3>
+          <p>
+            Punya gagasan kritis, artikel opini populer, atau telaah keislaman kontemporer berbasis Maqāṣid? Kirimkan naskah Anda untuk dikurasi oleh dewan redaksi dan diterbitkan di portal resmi BARISMA.
+          </p>
+          <div class="submit-meta">
+            <span>✓ Kurasi Dewan Redaksi</span>
+            <span>✓ Masuk Antrean Portal Admin</span>
+            <span>✓ Terbit dengan Profil Penulis</span>
+          </div>
+        </div>
+        <div class="submit-actions">
+          <button type="button" class="btn btn-submit-trigger" id="btnOpenSubmitModal">
+            Kirim Tulisan / Naskah Sekarang ✎
+          </button>
+          <a class="btn btn-submit-guide" href="publikasi.html">
+            Lihat Contoh Publikasi →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MODAL: FORMULIR SUBMIT TULISAN ARTIKEL WEB
+       ============================================================ -->
+  <div class="modal-overlay" id="submitArticleModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <span class="modal-kicker">Kanal Penulis Kontributor</span>
+          <h3 class="modal-title">Formulir Kirim Artikel Web BARISMA</h3>
+        </div>
+        <button type="button" class="modal-close" id="btnCloseSubmitModal" aria-label="Tutup Formulir">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <form id="publicArticleSubmitForm" class="modal-form">
+        <div class="form-row">
+          <div class="form-group flex-2">
+            <label for="subTitle">Judul Artikel / Opini *</label>
+            <input type="text" id="subTitle" required placeholder="Contoh: Hermeneutika Maqāṣid dalam Etika Digital Santri">
+          </div>
+          <div class="form-group flex-1">
+            <label for="subCategory">Kategori Tulisan *</label>
+            <select id="subCategory" required>
+              <option value="Opini Populer">Opini Populer</option>
+              <option value="Esai &amp; Refleksi">Esai &amp; Refleksi</option>
+              <option value="Resensi Buku &amp; Turats">Resensi Buku &amp; Turats</option>
+              <option value="Kajian Maqāṣidi">Kajian Maqāṣidi</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label for="subAuthor">Nama Penulis *</label>
+            <input type="text" id="subAuthor" required placeholder="Nama lengkap &amp; gelar (jika ada)">
+          </div>
+          <div class="form-group flex-1">
+            <label for="subInstitution">Instansi / Pesantren / Kampus *</label>
+            <input type="text" id="subInstitution" required placeholder="Contoh: PP LSQ Ar-Rohmah / UIN Sunan Kalijaga">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label for="subEmail">Email Penulis *</label>
+            <input type="email" id="subEmail" required placeholder="emailanda@gmail.com">
+          </div>
+          <div class="form-group flex-1">
+            <label for="subPhone">No. WhatsApp *</label>
+            <input type="tel" id="subPhone" required placeholder="0812xxxxxxxx">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="subContent">Isi Naskah Tulisan / Ringkasan Gagasan *</label>
+          <textarea id="subContent" rows="7" required placeholder="Tuliskan isi artikel Anda di sini (minimal 300 - 800 kata)..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="subDocLink">Tautan Dokumen / Google Docs (Opsional)</label>
+          <input type="url" id="subDocLink" placeholder="https://docs.google.com/document/d/... (Akses Publik)">
+          <span class="form-hint">Jika naskah panjang atau memiliki referensi turats, Anda dapat mencantumkan tautan naskah Google Docs di sini.</span>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" id="btnCancelSubmitModal">Batal</button>
+          <button type="submit" class="btn btn-primary" id="btnSubmitArticle">
+            Kirim Naskah ke Antrean Redaksi →
+          </button>
+        </div>
+      </form>
+
+      <!-- Alert Sukses Setelah Submit -->
+      <div class="submit-success-box" id="submitSuccessBox" style="display:none;">
+        <div class="success-icon">✓</div>
+        <h4>Naskah Berhasil Masuk ke Portal Admin!</h4>
+        <p>
+          Alhamdulillah! Naskah Anda telah tersimpan ke sistem kurasi editorial <strong>Portal Admin BARISMA</strong> dengan status <em>"In Review"</em>. Dewan redaksi akan memeriksa dan menyunting naskah sebelum diterbitkan.
+        </p>
+        <div class="success-actions">
+          <a class="btn btn-primary" id="waConfirmBtn" href="#" target="_blank" rel="noopener noreferrer">
+            Konfirmasi ke WA Redaksi (Mas Rifki) ↗
+          </a>
+          <button type="button" class="btn btn-outline" id="btnDoneSubmitModal">Selesai</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================
+       KONTAK SEKRETARIAT & AJAKAN KERJASAMA
+       ============================================================ -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-banner">
+        <div>
+          <span class="section-kicker" style="color:#34d399;">Mari Berkolaborasi</span>
+          <h2>Konsultasikan Kebutuhan Riset &amp; Kemitraan</h2>
+          <p>
+            Sekretariat BARISMA siap membantu bimbingan tugas akhir, klinik proposal, penerbitan antologi, dan kerjasama MoU perguruan tinggi.
+          </p>
+          <div class="contact-list">
+            <div>Alamat: <strong>Kompleks PP LSQ Ar-Rohmah, Yogyakarta</strong></div>
+            <div>Email: <a href="mailto:badanrisetmaqasidlsq.yk@gmail.com">badanrisetmaqasidlsq.yk@gmail.com</a></div>
+            <div>WhatsApp: <a href="https://wa.me/6285702829379" target="_blank" rel="noopener noreferrer">Rifki (0857-0282-9379)</a></div>
+          </div>
+        </div>
+
+        <div class="contact-card-box">
+          <h3>Narahubung Cepat</h3>
+          <p>Hubungi koordinator sekretariat langsung via WhatsApp untuk respon cepat.</p>
+          <a class="btn btn-primary" style="width:100%;" href="https://wa.me/6285702829379?text=Halo%20Mas%20Rifki,%20saya%20ingin%20konsultasi%20program%20riset%20BARISMA" target="_blank" rel="noopener noreferrer">
+            Chat Mas Rifki (WhatsApp) ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-grid">
+        
+        <!-- Brand Column -->
+        <div class="footer-brand">
+          <img src="assets/images/logo-horizontal.png" alt="BARISMA">
+          <p>
+            Pusat pemikiran (*think-tank*) dan unit pengembangan kapasitas akademik berbasis Tafsir Maqāṣidi di lingkungan Pondok Pesantren LSQ Ar-Rohmah Yogyakarta.
+          </p>
+        </div>
+
+        <!-- Col 1: Navigasi -->
+        <div class="footer-col">
+          <h4>Navigasi</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="tentang.html">Tentang BARISMA</a></li>
+            <li><a href="publikasi.html">Publikasi &amp; Opini</a></li>
+            <li><a href="program.html">Program &amp; Pelatihan</a></li>
+            <li><a href="kemitraan.html">Kemitraan Kampus</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 2: Kanal Publikasi -->
+        <div class="footer-col">
+          <h4>Publikasi</h4>
+          <ul class="footer-links">
+            <li><a href="publikasi.html">Artikel Opini Populer</a></li>
+            <li><a href="publikasi.html">Esai &amp; Refleksi</a></li>
+            <li><a href="publikasi.html">Working Paper &amp; Tesis</a></li>
+            <li><a href="program.html">Buku Antologi Ber-ISBN</a></li>
+            <li><a href="#submit-tulisan" style="color:#34d399; font-weight:600;">Kirim Tulisan / Artikel ✎</a></li>
+            <li><a href="publikasi.html#portal-ojs" style="color:#fcd34d; font-weight:700;">Portal OJS JUSMA ↗</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Sekretariat -->
+        <div class="footer-col">
+          <h4>Sekretariat</h4>
+          <ul class="footer-links">
+            <li>PP LSQ Ar-Rohmah, Yogyakarta</li>
+            <li><a href="mailto:badanrisetmaqasidlsq.yk@gmail.com">badanrisetmaqasidlsq.yk@gmail.com</a></li>
+            <li><a href="https://wa.me/6285702829379" target="_blank" rel="noopener noreferrer">Rifki (0857-0282-9379)</a></li>
+            <li><a href="admin.html" style="color:#34d399;">Portal CMS Editor ↗</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Badan Riset Maqāṣid (BARISMA) — LSQ Ar-Rohmah Yogyakarta. Seluruh hak cipta dilindungi.</div>
+        <div style="display:flex; gap:16px;">
+          <a href="tentang.html">Profil</a>
+          <a href="publikasi.html">Publikasi</a>
+          <a href="kontak.html">Kontak</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a class="whatsapp-float" href="https://wa.me/6285702829379?text=Halo%20Mas%20Rifki,%20saya%20ingin%20konsultasi%20program%20riset%20BARISMA" target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp Mas Rifki">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+    </svg>
+    <span>Chat Mas Rifki</span>
+  </a>
+
+  <!-- Swiper JS & Script -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="assets/js/home.js"></script>
+
+</body>
+</html>
